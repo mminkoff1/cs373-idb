@@ -7,54 +7,47 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">VideoGameLookup</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">VideoGameLookup</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/about">Genre</a></li>
+        <li><a href="/publisher">Publisher</a></li>
+        <li class="active"><a href="/games">Games</a></li>
+        <li><a href="/about">About us</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="/about">Genre</a></li>
-      <li><a href="/publisher">Publisher</a></li>
-      <li class="active"><a href="/games">Games</a></li>
-      <li><a href="/about">About us</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
+
   <div class="container-fluid">
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Title</th>
-          <th>Number of Players</th>
+          <th>Publisher</th>
           <th>Theme</th>
           <th>Year Published</th>
           <th>Average Score</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <th scope="row">Mario</th>
-          <th>1</th>
-          <th>Platformer</th>
-          <th>1980</th>
-          <th>100</th>
-        </tr>
-        <th scope="row">Mario</th>
-        <th>1</th>
-        <th>Platformer</th>
-        <th>1980</th>
-        <th>100</th>
-      </tr>
-      <tr>
-        <th scope="row">Mario</th>
-        <th>1</th>
-        <th>Platformer</th>
-        <th>1980</th>
-        <th>100</th>
-      </tr>
-    </tbody>
-  </table
+      </thead>
 
+      <tbody>
+        {% for game in games %}
+        <tr>
+          <th scope="row">{{game.name}}</th>
+          <th>{{game.publisher}}</th>
+          <th>{{game.theme}}</th>
+          <th>{{game.year}}</th>
+          <th>{{game.avg_score}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>

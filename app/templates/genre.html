@@ -7,20 +7,45 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">VideoGameLookup</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">VideoGameLookup</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/genre">Genre</a></li>
+        <li><a href="/publisher">Publisher</a></li>
+        <li><a href="/games">Games</a></li>
+        <li><a href="/about">About us</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/genre">Genre</a></li>
-      <li><a href="/publisher">Publisher</a></li>
-      <li><a href="/games">Games</a></li>
-      <li><a href="/about">About us</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
+  <div class="container-fluid">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Games</th>
+          <th>Average Rating</th>
+          <th>Popularity</th>
+        </tr>
+        <tr>
+      </thead>
+
+      <tbody>
+        {% for genre in genres %}
+        <tr>
+          <th scope="row">{{genre.name}}</th>
+          <th>{{genre.num_games}}</th>
+          <th>{{genre.avg_rating}}</th>
+          <th>{{genre.popularity}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
