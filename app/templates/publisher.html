@@ -7,19 +7,47 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">VideoGameLookup</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">VideoGameLookup</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/genre">Genre</a></li>
+        <li class="active"><a href="/publisher">Publisher</a></li>
+        <li><a href="/games">Games</a></li>
+        <li><a href="/about">About us</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="/genre">Genre</a></li>
-      <li class="active"><a href="/publisher">Publisher</a></li>
-      <li><a href="/games">Games</a></li>
-      <li><a href="/about">About us</a></li>
-    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Year Founded</th>
+          <th>Country</th>
+          <th>Number of Franchises</th>
+          <th>Number of Games</th>
+        </tr>
+        <tr>
+      </thead>
+
+      <tbody>
+        {% for publisher in publishers %}
+        <tr>
+          <th scope="row">{{publisher.name}}</th>
+          <th>{{publisher.year_founded}}</th>
+          <th>{{publisher.country}}</th>
+          <th>{{publisher.num_franchises}}</th>
+          <th>{{publisher.num_games}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
   </div>
-</nav>
 
 
     <script src="http://code.jquery.com/jquery.js"></script>

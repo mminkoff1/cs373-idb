@@ -7,28 +7,47 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">VideoGameLookup</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">VideoGameLookup</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/about">Genre</a></li>
+        <li><a href="/publisher">Publisher</a></li>
+        <li class="active"><a href="/games">Games</a></li>
+        <li><a href="/about">About us</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="/about">Genre</a></li>
-      <li><a href="/publisher">Publisher</a></li>
-      <li class="active"><a href="/games">Games</a></li>
-      <li><a href="/about">About us</a></li>
-    </ul>
-  </div>
-</nav>
-  <h1> Games: </h2>
-  {% for game in games %}
-    <li>{{game.name}} {{game.year }}</li>
-  {% endfor %}
-  <h1> Publishers: </h2>
-  {% for publisher in publishers %}
-    <li>{{publisher.name}}</li>
-  {% endfor %}
+  </nav>
 
+  <div class="container-fluid">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Publisher</th>
+          <th>Theme</th>
+          <th>Year Published</th>
+          <th>Average Score</th>
+        </tr>
+        <tr>
+      </thead>
+
+      <tbody>
+        {% for game in games %}
+        <tr>
+          <th scope="row">{{game.name}}</th>
+          <th>{{game.publisher}}</th>
+          <th>{{game.theme}}</th>
+          <th>{{game.year}}</th>
+          <th>{{game.avg_score}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
