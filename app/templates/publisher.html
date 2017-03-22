@@ -7,54 +7,48 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">VideoGameLookup</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">VideoGameLookup</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/genre">Genre</a></li>
+        <li class="active"><a href="/publisher">Publisher</a></li>
+        <li><a href="/games">Games</a></li>
+        <li><a href="/about">About us</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="/genre">Genre</a></li>
-      <li class="active"><a href="/publisher">Publisher</a></li>
-      <li><a href="/games">Games</a></li>
-      <li><a href="/about">About us</a></li>
-    </ul>
-  </div>
-</nav>
- <div class="container-fluid">
+  </nav>
+
+  <div class="container-fluid">
     <table class="table table-bordered">
-      <h1 class = "text-center"> Publishers </h1>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Number of Games Published</th>
+          <th>Title</th>
+          <th>Year Founded</th>
           <th>Country</th>
           <th>Number of Franchises</th>
-          <th>Average number of DLCs</th>
+          <th>Number of Games</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <th scope="row">Mario</th>
-          <th>1</th>
-          <th>Platformer</th>
-          <th>1980</th>
-          <th>100</th>
+      </thead>
+
+      <tbody>
+        {% for publisher in publishers %}
+        <tr>
+          <th scope="row">{{publisher.name}}</th>
+          <th>{{publisher.year_founded}}</th>
+          <th>{{publisher.country}}</th>
+          <th>{{publisher.num_franchises}}</th>
+          <th>{{publisher.num_games}}</th>
         </tr>
-        <th scope="row">Mario</th>
-        <th>1</th>
-        <th>Platformer</th>
-        <th>1980</th>
-        <th>100</th>
-      </tr>
-      <tr>
-        <th scope="row">Mario</th>
-        <th>1</th>
-        <th>Platformer</th>
-        <th>1980</th>
-        <th>100</th>
-      </tr>
-    </tbody>
-  </table>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+  </div>
+
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
