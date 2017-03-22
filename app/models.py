@@ -16,10 +16,6 @@ class Game(Base):
 	systems = Column(String)
 	theme = Column(String)
 
-	#Relationships
-    publisher = relationship("Publisher", back_populates="game")
-    genre = relationship("Genre", back_populates="game")
-	
 
 class Publisher(Base):
 	__tablename__ = 'publisher'
@@ -32,12 +28,6 @@ class Publisher(Base):
 	num_franchises = Column(Integer)
 
 
-	#Relationships
-
-    game = relationship("Game", back_populates="publisher")
-    genre = relationship("Genre", back_populates="publisher")
-
-
 class Genre(Base):
 	__tablename__ = 'genre'
 
@@ -48,16 +38,8 @@ class Genre(Base):
 	rel_genre = Column(String)
 	popularity = Column(Integer)
 
-
-	#Relationships
-	publisher_id = Column(Integer, ForeignKey('publisher.id')) 
-
-    publisher = relationship("Publisher", back_populates="genre")
-    game = relationship("Game", back_populates="genre")
-    
-
-
+"""
 if __name__ == '__main__':
 	engine =  create_engine("")
 	Base.metadata.create_all(engine)
-
+"""
