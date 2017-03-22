@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from models import Game, Publisher, Genre
 import os
 from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -18,9 +17,6 @@ app.config.update(dict(
 ))
 
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-
-
-
 
 db = SQLAlchemy(app)
 
@@ -59,8 +55,6 @@ class Genre(db.Model):
 	popularity = Column(Integer)
 
 
-
-
 @app.route('/')
 def splash():
 	return render_template("splash.html")
@@ -71,7 +65,7 @@ def about():
 
 @app.route('/games')
 def games():
-	return render_template("games.html")
+	return render_template("games.html",  games=Game.query.all(), publishers=Publisher.query.all())
 
 @app.route('/genre')
 def genre():

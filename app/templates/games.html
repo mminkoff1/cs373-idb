@@ -20,6 +20,14 @@
     </ul>
   </div>
 </nav>
+  <h1> Games: </h2>
+  {% for game in games %}
+    <li>{{game.name}} {{game.year }}</li>
+  {% endfor %}
+  <h1> Publishers: </h2>
+  {% for publisher in publishers %}
+    <li>{{publisher.name}}</li>
+  {% endfor %}
 
 
     <script src="http://code.jquery.com/jquery.js"></script>
