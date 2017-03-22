@@ -1,6 +1,4 @@
 $(document).ready(function(){
-  $('#myModal').modal('show');
-
   $(function () {
       $('a[href="#search"]').on('click', function(event) {
 	  event.preventDefault();
