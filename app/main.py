@@ -24,19 +24,19 @@ class Graders(db.Model):
 def splash():
 	return render_template("splash.html")
 
-@app.route('/about.html')
+@app.route('/about')
 def about():
 	return render_template("about.html")
 
-@app.route('/games.html')
+@app.route('/games')
 def games():
 	return render_template("games.html")
 
-@app.route('/genre.html')
+@app.route('/genre')
 def genre():
 	return render_template("genre.html")
 
-@app.route('/publisher.html')
+@app.route('/publisher')
 def publisher():
 	return render_template("publisher.html")
 
