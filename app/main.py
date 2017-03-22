@@ -103,21 +103,21 @@ if __name__ == "__main__":
 	publisher = Publisher()
 	publisher.name = "CD Projekt RED"
 	publisher.country = "Poland"
-	publisher.year = 1994
+	publisher.year_founded = 1994
 	publisher.num_franchises = 1
 	db.session.add(publisher)
 
 	publisher = Publisher()
 	publisher.name = "Bandai Namco"
 	publisher.country = "Japan"
-	publisher.year = 2015
+	publisher.year_founded = 2015
 	publisher.num_franchises = 1
 	db.session.add(publisher)
 
 	publisher = Publisher()
 	publisher.name = "Valve"
 	publisher.country = "USA"
-	publisher.year = 1996
+	publisher.year_founded = 1996
 	publisher.num_franchises = 1
 	db.session.add(publisher)
 
