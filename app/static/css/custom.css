@@ -104,3 +104,29 @@
     left: 42.8%;
     top: 30%;
 }
+
+.navbar-inner {
+    background:transparent;
+    border: transparent;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nav.navbar-nav li a {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7em;
+}
+
+.navbar-default .navbar-brand {
+  font-family: 'Press Start 2P', cursive;
+        color: black;
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;  
+}
