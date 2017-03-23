@@ -22,18 +22,19 @@
   </nav>
 
   <div class="container-fluid">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="tb">
       <thead>
         <tr>
           <th>Name</th>
           <th>Number of Games</th>
-          <th>Average Rating</th>
+          <th>Average Score</th>
           <th>Popularity</th>
+          <th>Related Genre</th>
         </tr>
         <tr>
       </thead>
 
-      <tbody>
+<!--       <tbody>
         {% for genre in genres %}
         <tr>
           <th scope="row">{{genre.name}}</th>
@@ -42,13 +43,36 @@
           <th>{{genre.popularity}}</th>
         </tr>
         {% endfor %}
-      </tbody>
+      </tbody> -->
+
+      <tr>
+        <th> <a href = "genreRPG.html"> Role-playing Game </a></th>
+        <th> 253614 </th>
+        <th> 73 </th>
+        <th> 23%</th>
+        <th> Action RPG </th>
+      </tr>
+      <tr>
+        <th> <a href = "genreFPS.html"> First person Shooter </a></th>
+        <th>  456456 </th>
+        <th>  62 </th>
+        <th> 40% </th>
+        <th> Multiplayer Arena </th>
+       </tr>
+       <tr>
+        <th> <a href = "genreTBS.html"> Turn-Based Strategy </a></th>
+        <th>  96325 </th>
+        <th> 67 </th>
+        <th> 16% </th>
+        <th> Real time Strategy </th>
+        </tr>  
       
     </table>
   </div>
 
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.tablesorter.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
     <script src="../static/js/videoGameLookup.js"></script>
 

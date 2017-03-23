@@ -22,19 +22,19 @@
   </nav>
 
   <div class="container-fluid">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="tb">
       <thead>
         <tr>
           <th>Title</th>
-          <th>Year Founded</th>
           <th>Country</th>
+          <th>Year Founded</th>
           <th>Number of Franchises</th>
           <th>Number of Games</th>
         </tr>
         <tr>
       </thead>
 
-      <tbody>
+<!--       <tbody>
         {% for publisher in publishers %}
         <tr>
           <th scope="row">{{publisher.name}}</th>
@@ -44,14 +44,36 @@
           <th>{{publisher.num_games}}</th>
         </tr>
         {% endfor %}
-      </tbody>
+      </tbody> -->
+      
+        <tr>
+        <th> <a href = "publisherCDProjektRED.html"> CD Projekt RED </a></th>
+        <th> Poland </th>
+        <th> 1994 </th>
+        <th> 2</th>
+        <th> 6 </th>
+      </tr>
+      <tr>
+        <th> <a href = "publisher2k.html"> 2k Games </a></th>
+        <th>  USA </th>
+        <th>  2005 </th>
+        <th> 6 </th>
+        <th> 598 </th>
+       </tr>
+       <tr>
+        <th> <a href = "publisherMicrosoft.html"> Microsoft Studios </a></th>
+        <th> USA </th>
+        <th> 2002 </th>
+        <th> 562 </th>
+        <th> 2160 </th>
+        </tr>  
       
     </table>
   </div>
 
-
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.tablesorter.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
     <script src="../static/js/videoGameLookup.js"></script>
 

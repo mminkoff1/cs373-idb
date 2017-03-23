@@ -22,7 +22,7 @@
   </nav>
 
   <div class="container-fluid">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="tb">
       <thead>
         <tr>
           <th>Title</th>
@@ -34,7 +34,7 @@
         <tr>
       </thead>
 
-      <tbody>
+ <!--      <tbody>
         {% for game in games %}
         <tr>
           <th scope="row">{{game.name}}</th>
@@ -44,13 +44,36 @@
           <th>{{game.avg_score}}</th>
         </tr>
         {% endfor %}
-      </tbody>
+      </tbody> -->
+      <tr>
+        <th> <a href = "gameWitcher3.html"> The Witcher 3 </a></th>
+        <th> 2015 </th>
+        <th> RPG </th>
+        <th> CD Projekt RED</th>
+        <th> 97 </th>
+      </tr>
+      <tr>
+        <th> <a href = "gameHalo5.html"> Halo 5 </a></th>
+        <th> 2016 </th>
+        <th> First person shooter </th>
+        <th> Microsoft Studios </th>
+        <th> 93 </th>
+       </tr>
+       <tr>
+        <th> <a href = "gameCivV.html"> Civilization V </a></th>
+        <th> 2004 </th>
+        <th> Turn-Based Strategy </th>
+        <th> 2k Games </th>
+        <th> 99 </th>
+        </tr>  
       
     </table>
   </div>
 
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.tablesorter.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
     <script src="../static/js/videoGameLookup.js"></script>
 
