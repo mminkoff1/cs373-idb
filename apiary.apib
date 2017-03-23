@@ -1,80 +1,200 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://gamelookup.me/api
 
-# cs373-api
+# GameLookup
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+GameLookup is your one-stop-shop for all you curious gamer needs.
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+## GameLookup Database [/search?{query}&{limit}]
 
+### Search our Database [GET]
+
++ Parameters
+    + query - query string
+    + limit - number of returned items limit
+    
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+         "Results": [
+                {
+                    "type": "Game",
+                    "title": "Test game",
+                    "route": "/games/1234",
+                    "image": "image source"
+                },
+                {
+                    "type": "Publisher",
+                    "title": "Test Company",
+                    "route": "/publishers/1234",
+                    "image": "image source"  
+                },
+                {
+                    "type": "Genre",
+                    "title": "Test Genre",
+                    "route": "/genre/1234",
+                    "image": "image source"  
+                }
             ]
         }
 
-+ Response 201 (application/json)
 
-    + Headers
+## Game Collection [/games/]
 
-            Location: /questions/2
+### List Game Collection [GET]
 
-    + Body
++ Response 200 (application/json)
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+         "Games": [
+                {
+                    "id": 1234,
+                    "title": "Test game",
+                    "number of players": "2",
+                    "theme": "Action",
+                    "year published": "2000",
+                    "avgerage player score": "1234",
+                    "systems": "systems"
+                },
+                {
+                    "id": 1235,
+                    "title": "Tester game",
+                    "number of players": "1",
+                    "theme": "Adventure",
+                    "year published": "2000",
+                    "avgerage player score": "1234",
+                    "systems": "systems"
+                }
+            ]
+        }
+
+
+## Game Information [/games/{id}]
+
+### Get Game Info [GET]
+
++ Parameters
+    + id (number) - ID of game
+
++ Response 200 (application/json)
+
+        {
+         "Game": [
+                {
+                    "id": 1235,
+                    "title": "Tester game",
+                    "number of players": "1",
+                    "theme": "Adventure",
+                    "year published": "2000",
+                    "avgerage player score": "1234",
+                    "systems": "systems"
+                }
+            ]
+        }
+
+
+## Publisher Collection [/publishers/]
+
+### List Publisher Collection [GET]
+
++ Response 200 (application/json)
+
+        {
+         "Publishers": [
+                {
+                    "id": 642,
+                    "name": "testcompany1",
+                    "number of games": "123",
+                    "year founded": "2000",
+                    "country founded": "country A",
+                    "number of franchises": 12,
+                    "average number of DLCs": 12
+                },
+                {
+                    "id": 212,
+                    "name": "testcompany2",
+                    "number of games": "234",
+                    "year founded": "2014",
+                    "country founded": "country B",
+                    "number of franchises": 12,
+                    "average number of DLCs": 12
+                }
+            ]
+        }
+
+
+
+## Publisher Information [/publishers/{id}]
+
+### Get Publisher Info [GET]
+
++ Parameters
+    + id (number) - ID of company/publisher
+
++ Response 200 (application/json)
+
+        {
+         "Publisher": [
+                {
+                    "id": 642,
+                    "name": "testcompany1",
+                    "number of games": "123",
+                    "year founded": "2000",
+                    "country founded": "country A",
+                    "number of franchises": 12,
+                    "average number of DLCs": 12
+                }
+            ]
+        }
+
+
+## Genre Collection [/genres/]
+
+### List Genre Collection [GET]
+
++ Response 200 (application/json)
+
+        {
+         "Genres": [
+                {
+                    "id": 1,
+                    "name": "Action",
+                    "number of games": 12345,
+                    "average rating": "rating"
+                    "popularity": "popular",
+                    "related genres": ["genre1", "genre2", "genre3"]
+                },
+                {
+                    "id": 2,
+                    "name": "Adventure",
+                    "number of games": 12345,
+                    "average rating": "rating"
+                    "popularity": "popular",
+                    "related genres": ["genre1", "genre2"]
+                }
+            ]
+        }
+
+
+## Genre Information [/genres/{id}]
+
+### Get Genre Info [GET]
+
++ Parameters
+    + id (number) - ID of genre/theme
+
++ Response 200 (application/json)
+
+        {
+         "Genre": [
+                {
+                    "id": 1,
+                    "name": "Action",
+                    "number of games": 12345,
+                    "average rating": "rating"
+                    "popularity": "popular",
+                    "related genres": ["genre1", "genre2", "genre3"]
+                }
+            ]
+        }
