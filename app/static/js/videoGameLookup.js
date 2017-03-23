@@ -4,14 +4,16 @@ $(document).ready(function(){
 	  event.preventDefault();
 	  $('#search').addClass('open');
 	  $('#search > form > input[type="search"]').focus();
+          $('#but').hide();
+          $('#start-text').hide();
       });
       
       $('#search, #search button.close').on('click keyup', function(event) {
 	  if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
 	      $(this).removeClass('open');
+              $('#but').show();
+	      $('#start-text').show();  
 	  }
-	  $('#but').show();
-	  $('#start-text').show();
       });
 
       $('form').submit(function(event) {
