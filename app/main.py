@@ -1,12 +1,12 @@
 from flask import Flask, render_template
-#import os
-#from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
-#from sqlalchemy.ext.declarative import declarative_base
-#from flask_sqlalchemy import SQLAlchemy
+import os
+from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
-'''app.config.from_object(__name__) # load config from this file , flaskr.py
+app.config.from_object(__name__) # load config from this file , flaskr.py
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
@@ -53,7 +53,7 @@ class Genre(db.Model):
 	avg_rating = Column(Integer)
 	rel_genre = Column(String)
 	popularity = Column(Integer)
-'''
+
 
 @app.route('/')
 def splash():
@@ -65,7 +65,7 @@ def about():
 
 @app.route('/games')
 def games():
-	return render_template("games.html", games = Game.query.all(), )
+	return render_template("games.html", games = Game.query.all())
 
 @app.route('/genre')
 def genre():
@@ -76,7 +76,7 @@ def publisher():
 	return render_template("publisher.html", publishers = Publisher.query.all())
 
 if __name__ == "__main__":
-	'''
+		
 	db.create_all()				# Only want to do this once, this is just here for demonstration
 	
 	game = Game()
@@ -143,5 +143,5 @@ if __name__ == "__main__":
 	db.session.add(genre)
 
 	db.session.commit()
-	'''
+	
 	app.run()
