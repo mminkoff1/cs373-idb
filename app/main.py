@@ -76,7 +76,6 @@ def publisher():
 	return render_template("publisher.html", publishers = Publisher.query.all())
 
 if __name__ == "__main__":
-		
 	db.create_all()				# Only want to do this once, this is just here for demonstration
 	
 	game = Game()
