@@ -10,6 +10,8 @@ $(document).ready(function(){
 	  if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
 	      $(this).removeClass('open');
 	  }
+	  $('#but').show();
+	  $('#start-text').show();
       });
 
       $('form').submit(function(event) {
@@ -18,4 +20,13 @@ $(document).ready(function(){
  	  alert(searchstring.val());
       });
   });
+
+  $(function () {
+    $("#but").click(function () {
+      $('#search').trigger('click');
+      $('#but').hide();
+      $('#start-text').hide();
+    });
+  });
+
 });

@@ -6253,9 +6253,9 @@ button.close {
   display: none;
   height: 100%;
   width: 100%;
-  -webkit-transition: .6s ease-in-out left;
-       -o-transition: .6s ease-in-out left;
-          transition: .6s ease-in-out left;
+  -webkit-transition: 5s linear left;
+       -o-transition: 5s linear left;
+          transition: 5s linear left;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
@@ -6813,6 +6813,18 @@ button.close {
 	padding: 10px 17px;
 	font-size: 27px;
 }
+
+#start-text {
+    font-size: 1.3em;
+    color:white;
+    position:absolute;
+    z-index: 5000;
+    height: 20% !important;
+    width: 100% !important;
+    top: 50%;
+    font-family: 'Press Start 2P', cursive;
+}
+
 
 #but {
     background-color: transparent;
