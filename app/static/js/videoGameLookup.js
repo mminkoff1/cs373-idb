@@ -4,15 +4,15 @@ $(document).ready(function(){
 	  event.preventDefault();
 	  $('#search').addClass('open');
 	  $('#search > form > input[type="search"]').focus();
-          $('#but').hide();
-          $('#start-text').hide();
+          $('#but').fadeOut();
+          $('#start-text').fadeOut();
       });
       
       $('#search, #search button.close').on('click keyup', function(event) {
 	  if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
 	      $(this).removeClass('open');
-              $('#but').show();
-	      $('#start-text').show();  
+              $('#but').fadeIn();
+	      $('#start-text').fadeIn();  
 	  }
       });
 
@@ -26,8 +26,8 @@ $(document).ready(function(){
   $(function () {
     $("#but").click(function () {
       $('#search').trigger('click');
-      $('#but').hide();
-      $('#start-text').hide();
+      $('#but').fadeOut();
+      $('#start-text').fadeOut();
     });
   });
 

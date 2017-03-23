@@ -1,3 +1,16 @@
+.carousel .item {
+  position: fixed; 
+  top:0;
+  width: 100%; 
+  height: 100%;
+}
+.carousel .one {
+  background: url(../static/images/marioback.jpg);
+  background-position: center;  
+  background-size: cover;
+  -moz-background-size: cover;
+}
+
 #search {
     position: fixed;
     top: 200px;
@@ -49,7 +62,7 @@
 #search .btn {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 52%;
     margin-top: 61px;
     margin-left: -45px;
 }
@@ -61,14 +74,18 @@
         background-color: #428bca;
         border-color: #357ebd;
         opacity: 1;
-        padding: 10px 17px;
-        font-size: 27px;
+        padding: 4px 7px;
+        font-size: 12px;
+}
+
+#thisdiv {
+    margin: 0 auto;
 }
 
 #start-text {
     font-size: 1.3em;
     color:white;
-    position:absolute;
+    position:relative;
     z-index: 5000;
     height: 20% !important;
     width: 100% !important;
@@ -78,8 +95,9 @@
 
 
 #but {
+    margin-top: 15%;
     background-color: transparent;
-    position:absolute;
+    position: relative;
     z-index: 5000;
     height: 20% !important;
     width: 15% !important;

@@ -8,11 +8,9 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
-  height: 100%;
 }
 body {
   margin: 0;
-  height: 100%;
 }
 article,
 aside,
@@ -1124,8 +1122,7 @@ img {
 .carousel-inner > .item > a > img {
   display: block;
   max-width: 100%;
-  height: 100% !important;
-  width: 100% !important;
+  height: auto;
 }
 .img-rounded {
   border-radius: 6px;
@@ -3633,7 +3630,7 @@ tbody.collapse.in {
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
-  margin-bottom: 0px;
+  margin-bottom: 2px;
 }
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
@@ -4169,8 +4166,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
+  margin-bottom: 20px;
   border: 1px solid transparent;
-  margin-bottom: 0 !important;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -6239,31 +6236,22 @@ button.close {
 }
 .carousel {
   position: relative;
-  height: 100%;
-  width: 100%;
 }
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100%;
 }
 .carousel-inner > .item {
   position: relative;
   display: none;
-  height: 100%;
-  width: 100%;
-  -webkit-transition: 5s linear left;
-       -o-transition: 5s linear left;
-          transition: 5s linear left;
+  -webkit-transition: .6s ease-in-out left;
+       -o-transition: .6s ease-in-out left;
+          transition: .6s ease-in-out left;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   line-height: 1;
-  display: block;
-  height: 100%;
-  max-width: 100%;
-  width: 100%;
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
@@ -6300,20 +6288,15 @@ button.close {
 .carousel-inner > .next,
 .carousel-inner > .prev {
   display: block;
-  width: 100%;
-  height: 100%;
 }
 .carousel-inner > .active {
   left: 0;
-  height: 100%;
-  width: 100%;
 }
 .carousel-inner > .next,
 .carousel-inner > .prev {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
 }
 .carousel-inner > .next {
   left: 100%;
@@ -6331,7 +6314,6 @@ button.close {
 .carousel-inner > .active.right {
   left: 100%;
 }
-
 .carousel-control {
   position: absolute;
   top: 0;
@@ -6746,7 +6728,6 @@ button.close {
 .visible-print-block {
   display: none !important;
 }
-
 @media print {
   .visible-print-block {
     display: block !important;
