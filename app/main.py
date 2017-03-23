@@ -1,13 +1,13 @@
 from flask import Flask, render_template
-import os
-from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from flask_sqlalchemy import SQLAlchemy
+#import os
+#from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
+#from sqlalchemy.ext.declarative import declarative_base
+#from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
-
+'''
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'flaskr.db'),
@@ -53,7 +53,7 @@ class Genre(db.Model):
 	avg_rating = Column(Integer)
 	rel_genre = Column(String)
 	popularity = Column(Integer)
-
+'''
 
 @app.route('/')
 def splash():
@@ -65,17 +65,56 @@ def about():
 
 @app.route('/games')
 def games():
-	return render_template("games.html", games = Game.query.all())
+	return render_template("games.html")
 
 @app.route('/genre')
 def genre():
-	return render_template("genre.html", genres = Genre.query.all())
+	return render_template("genre.html")
 
 @app.route('/publisher')
 def publisher():
-	return render_template("publisher.html", publishers = Publisher.query.all())
+	return render_template("publisher.html")
+
+@app.route('/gameWitcher3')
+def witcher():
+	return render_template("gameWitcher3.html")
+
+@app.route('/gameHalo5')
+def halo5():
+	return render_template("gameHalo5.html")
+
+@app.route('/gameCivV')
+def civv():
+	return render_template("gameCivV.html")
+
+@app.route('/publisherCDProjektRED')
+def projectred():
+	return render_template("publisherCDProjektRED.html")
+
+@app.route('/publisher2k')
+def twok():
+	return render_template("publisher2k.html")
+
+@app.route('/publisherMicrosoft')
+def microsoft():
+	return render_template("publisherMicrosoft.html")
+
+@app.route('/genreRPG')
+def rpg():
+	return render_template("genreRPG.html")
+
+@app.route('/genreFPS')
+def fps():
+	return render_template("genreFPS.html")
+
+@app.route('/genreTBS')
+def tbs():
+	return render_template("genreTBS.html")
+
+
 
 if __name__ == "__main__":
+	'''
 	db.create_all()				# Only want to do this once, this is just here for demonstration
 	
 	game = Game()
@@ -142,5 +181,5 @@ if __name__ == "__main__":
 	db.session.add(genre)
 
 	db.session.commit()
-	
+	'''
 	app.run()

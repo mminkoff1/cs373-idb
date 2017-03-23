@@ -2,28 +2,44 @@
   <html>
   <head>
     <title>Video Game Lookup</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="../static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" media="screen" href="../static/css/custom.css">
+    <script type="text/javascript" src="../static/js/videoGameLookup.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
   </head>
-  <body>
+  <body style="background-color: black;">
 
-    <!-- NavBar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">VideoGameLookup</a>
-        </div>
+  <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-ex"> <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Game Lookup</a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
           <li><a href="/genre">Genre</a></li>
           <li><a href="/publisher">Publisher</a></li>
           <li><a href="/games">Games</a></li>
-          <li class="active"><a href="/about">About us</a></li>
+          <li><a href="/about">About us</a></li>
         </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#search">Search</a></li>
+      </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <div class="container-fluid">
-    <h1 class = "text-center"> About the Team </h1>
+    <h1 class = "text-center" id="about"> About the Team </h1>
     <div class= "im-centered">
     <div class = "row">
     <div class = "col-sm-1"></div>
@@ -36,7 +52,7 @@
      <p> Hey! My name is Jeff Fajay and I am computer science student at UT Austin. I worked on the frontend primarily for this project. When I  am not programming, I can be found hanging out with some friends and exploring all the great restaurants of Austin.</p>
    </div>
    <div class="col-sm-2">
-     <img src="../static/images/zoolander_400.jpg" class="img-circle img-responsive">
+     <img src="../static/images/Mitchell.png" class="img-circle img-responsive">
      <h3><strong>Mitchell Minkoff</strong></h3>
      <h4><strong>Commit Count:</strong> 10</h4>
      <h4><strong>Unit Tests Count:</strong> 2</h4>
@@ -46,7 +62,7 @@
      for keeping up with the Google App Engine for this project.</p>
    </div>
    <div class="col-sm-2">
-     <img src="../static/images/zoolander_400.jpg" class="img-circle img-responsive">
+     <img src="../static/images/Sean.jpg" class="img-circle img-responsive">
      <h3><strong>Sean Carrillo</strong></h3>
      <h4><strong>Commit Count:</strong> 4</h4>
      <h4><strong>Unit Tests Count:</strong> 2</h4>
@@ -56,7 +72,7 @@
      and hanging out with friends.</p>
    </div>
    <div class="col-sm-2">
-     <img src="../static/images/zoolander_400.jpg" class="img-circle img-responsive">
+     <img src="../static/images/Alex.jpg" class="img-circle img-responsive">
      <h3><strong>Alex Niznik</strong></h3>
      <h4><strong>Commit Count:</strong> 6</h4>
      <h4><strong>Unit Tests Count:</strong> 2</h4>
@@ -155,6 +171,14 @@
 
  </center>
  </div>
+  <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
+    <button type="button" class="close" style="z-index: 9999;">x</button>
+    <form>
+      <input id="searchstring" type="search" value="" placeholder="Type your keywords here!" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
 
    <script src="http://code.jquery.com/jquery.js"></script>
    <script src="../static/js/bootstrap.min.js"></script>
