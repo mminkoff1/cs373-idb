@@ -1,3 +1,16 @@
+.carousel .item {
+  position: fixed; 
+  top:0;
+  width: 100%; 
+  height: 100%;
+}
+.carousel .one {
+  background: url(../static/images/marioback.jpg);
+  background-position: center;  
+  background-size: cover;
+  -moz-background-size: cover;
+}
+
 #search {
     position: fixed;
     top: 200px;
@@ -65,10 +78,14 @@
         font-size: 27px;
 }
 
+#thisdiv {
+    margin: 0 auto;
+}
+
 #start-text {
     font-size: 1.3em;
     color:white;
-    position:absolute;
+    position:relative;
     z-index: 5000;
     height: 20% !important;
     width: 100% !important;
@@ -78,8 +95,9 @@
 
 
 #but {
+    margin-top: 15%;
     background-color: transparent;
-    position:absolute;
+    position: relative;
     z-index: 5000;
     height: 20% !important;
     width: 15% !important;
