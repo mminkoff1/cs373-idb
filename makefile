@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES :=                              \
+FILES :=                               \
 	.gitignore                        \
 	.travis.yml                       \
 	apiary.apib                       \
