@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function($scope) {
+app.controller('GameController', ['$scope', function($scope) {
 	$scope.games = [ 
 	  { 
 	    title: 'Halo 5', 
@@ -7,7 +7,7 @@ app.controller('MainController', ['$scope', function($scope) {
 	    published_year: 0.99,
 	    avg_score: 93 
 	  },
-	  
+
 	  { 
 	    title: 'Halo 6', 
 	    publisher: 'MOVE', 

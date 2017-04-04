@@ -1,10 +1,7 @@
-app.directive('appInfo',function(){
+app.directive('gameRow',function(){
   return {
     restict: 'E',
-    scope: {
-      info: '='
-    },
-    
-    templateUrl: '../../templates/gameRow.html'
+    scope: {},
+    templateUrl: 'js/directives/gameRow.html'
   };
 });
