@@ -6,38 +6,37 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 
 class Game(Base):
-	__tablename__ = 'game'
+	__tablename__ = 'games'
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
 	year = Column(Integer)
 	publisher = Column(String)
-	num_players = Column(Integer)
+	#num_players = Column(Integer)
 	avg_score = Column(Integer)
-	systems = Column(String)
+	#systems = Column(String)
 	theme = Column(String)
 
 
 class Publisher(Base):
-	__tablename__ = 'publisher'
+	__tablename__ = 'publishers'
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
 	num_games = Column(Integer)
 	year_founded = Column(Integer)
 	country = Column(String)
-	num_franchises = Column(Integer)
+	#num_franchises = Column(Integer)
 
 
-class Genre(Base):
-	__tablename__ = 'genre'
+class Character(Base):
+	__tablename__ = 'characters'
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
-	num_games = Column(Integer)
-	avg_rating = Column(Integer)
-	rel_genre = Column(String)
-	popularity = Column(Integer)
+        gender = Column(Integer)
+        species = Column(Integer)
+        num_games = Column(Integer)
 
 """
 if __name__ == '__main__':
