@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Game Lookup</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
+  <script src="../static/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" media="screen" href="../static/css/custom.css">
+  <script type="text/javascript" src="../static/js/videoGameLookup.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+</head>
+<body style="background-color: black;">
+  <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-ex"> <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Game Lookup</a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse-ex">
+        <ul class="nav navbar-nav">
+          <li><a href="/genre">Genre</a></li>
+          <li><a href="/publisher">Publisher</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/about">About us</a></li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#search">Search</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class= "container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+     <img src="../static/images/civ5_cover_art.png" class="img-responsive">
+      </div>
+
+      <div class="col-md-4">
+        <h1> Sid Meier's Civilization V</h1>
+        <p> Civilization V is the latest game in the Civilization franchise, developed by Firaxis Games and published by 2K Games. It was released on September 21, 2010 on the PC, and November 23, 2010 on the Mac. It makes a significant departure from the previous games in the franchise, adopting a hexagonal grid (instead of a square grid), and limiting units to one per tile. Some gameplay elements from Civilization IV, like religion and espionage, have been removed, while new elements like city states and limited strategic resources were added. </p>
+      </div>
+
+      <div class="col-md-4">
+        <h1>Genre</h1>
+        <a href="genreTBS">Turn-Based Strategy</a>
+
+        <h1>Publisher</h1>
+        <a href="publisher2k">2k Games</a>
+
+      </div>
+    </div>
+  </div>
+<div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
+    <button type="button" class="close" style="z-index: 9999;">x</button>
+    <form>
+      <input id="searchstring" type="search" value="" placeholder="Type your keywords here!" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
+
+ <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="../static/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
+ <script src="../static/js/videoGameLookup.js"></script>
+</body>
+</html>
