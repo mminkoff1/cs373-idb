@@ -53,34 +53,15 @@
         </tr>
         <tr>
       </thead>
-
- <!--      <tbody>
-        {% for game in games %}
-        <tr>
-          <th scope="row">{{game.name}}</th>
-          <th>{{game.publisher}}</th>
-          <th>{{game.theme}}</th>
-          <th>{{game.year}}</th>
-          <th>{{game.avg_score}}</th>
-        </tr>
-        {% endfor %}
-      </tbody> -->
-      <!-- <tr>
-        <th> <a href = "gameWitcher3"> The Witcher 3 </a></th>
-        <th> 2015 </th>
-        <th> RPG </th>
-        <th> CD Projekt RED</th>
-        <th> 97 </th>
-      </tr> -->
   <body ng-controller="GameController">
+    <tbody>
       <tr ng-repeat="game in games">
         <td>{{ game.title }}</td>
         <td>{{ game.publisher }}</td>
         <td>{{ game.theme }}</td>
         <td>{{ game.published_year }}</td>
         <td>{{ game.avg_score }}</td>
-       </tr>
-        </div>  
+       </tr>  
      </tbody> 
     </table>
   </div>
@@ -100,14 +81,14 @@
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
     <script src="../static/js/videoGameLookup.js"></script>
 
-        <!-- Modules -->
+    <!-- Modules -->
     <script src="../static/js/app.js"></script>
 
     <!-- Controllers -->
     <script src="../static/js/controllers/GameController.js"></script>
 
     <!-- Directives -->
-    <script src="../static/js/directives/gameRow.js"></script>
+    <script src="../static/js/directives/navBar.js"></script>
 
   </body>
   </html>
