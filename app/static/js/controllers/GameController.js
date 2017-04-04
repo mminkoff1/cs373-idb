@@ -1,20 +1,36 @@
 app.controller('GameController', ['$scope', function($scope) {
 	$scope.games = [ 
 	  { 
-	    title: 'Halo 5', 
-	    publisher: 'MOVE', 
-	    theme: 'MOVE, Inc.', 
-	    published_year: 0.99,
-	    avg_score: 93 
+	    title: 'Apple', 
+	    publisher: 'C', 
+	    theme: 'D', 
+	    published_year: 2,
+	    avg_score: 3 
 	  },
 
 	  { 
-	    title: 'Halo 6', 
-	    publisher: 'MOVE', 
-	    theme: 'MOVE, Inc.', 
-	    published_year: 0.99,
-	    avg_score: 93 
+	    title: 'Bravo', 
+	    publisher: 'A', 
+	    theme: 'B.', 
+	    published_year: 1,
+	    avg_score: 4 
+	  },
+	    { 
+	    title: 'Charlie', 
+	    publisher: 'Z', 
+	    theme: 'Y.', 
+	    published_year: 10,
+	    avg_score: 40 
+	  },
+	    { 
+	    title: 'Delta', 
+	    publisher: 'W', 
+	    theme: 'X.', 
+	    published_year: 500,
+	    avg_score: 19 
 	  }
 	];
-	$scope.greeting = "Hello World!"; 
+	$scope.sortType = 'name';
+	$scope.sortReverse = false;
+
 }]);
