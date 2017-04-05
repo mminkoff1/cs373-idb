@@ -33,10 +33,14 @@ app.controller('GameController', function($scope, $http) {
 	$scope.sortType = 'name';
 	$scope.sortReverse = false;
 
-
-    $http.get("customers_mysql.php")
+	var populate_games = function ()
+	{
+    $http.get("www.google.com")
     .then(function (response) {
     	$scope.dbGames = response.data;
     });
+	}
+
+	populate_games();
 
 });
