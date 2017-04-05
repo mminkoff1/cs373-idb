@@ -13,6 +13,7 @@ class Game(Base):
 	year = Column(Integer)
 	publisher = Column(String)
 	#num_players = Column(Integer)
+        #notable_char
 	avg_score = Column(Integer)
 	#systems = Column(String)
 	theme = Column(String)
@@ -23,10 +24,13 @@ class Publisher(Base):
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
+        #abbreviation = Column(String)
 	num_games = Column(Integer)
 	year_founded = Column(Integer)
 	country = Column(String)
 	#num_franchises = Column(Integer)
+        #notable_games
+        website = Column(String)
 
 
 class Character(Base):
@@ -34,9 +38,10 @@ class Character(Base):
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
-        gender = Column(Integer)
-        species = Column(Integer)
+        gender = Column(String)
+        species = Column(Strinng)
         num_games = Column(Integer)
+        first_game = Column(String)
 
 """
 if __name__ == '__main__':
