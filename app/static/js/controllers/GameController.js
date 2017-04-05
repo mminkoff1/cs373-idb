@@ -1,4 +1,4 @@
-app.controller('GameController', ['$scope', function($scope) {
+app.controller('GameController', function($scope, $http) {
 	$scope.games = [ 
 	  { 
 	    title: 'Apple', 
@@ -33,4 +33,10 @@ app.controller('GameController', ['$scope', function($scope) {
 	$scope.sortType = 'name';
 	$scope.sortReverse = false;
 
-}]);
+
+    $http.get("customers_mysql.php")
+    .then(function (response) {
+    	$scope.dbGames = response.data;
+    });
+
+});
