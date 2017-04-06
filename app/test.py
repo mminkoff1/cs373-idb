@@ -7,8 +7,7 @@ from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-
-from models import Game, Publisher, Character
+from models import Game
 
 #connect to database
 engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")
@@ -24,6 +23,6 @@ except:
 
 for x in data:
 	#encode to UTF-8 in case of any non-ASCII characters
-	s = unicode(x.avg_score).encode('utf8')
+	s = unicode(x).encode('utf8')
 	print s
         
