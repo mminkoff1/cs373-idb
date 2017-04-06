@@ -62,7 +62,7 @@
         <tr>
       </thead>
     <tbody>
-      <tr ng-repeat="game in games | orderBy:sortType:sortReverse">
+      <tr ng-repeat="game in dbGames | orderBy:sortType:sortReverse">
         <td>{{ game.title }}</td>
         <td>{{ game.publisher }}</td>
         <td>{{ game.theme }}</td>

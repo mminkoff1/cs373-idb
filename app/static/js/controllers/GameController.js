@@ -35,7 +35,7 @@ app.controller('GameController', function($scope, $http) {
 
 	var populate_games = function ()
 	{
-    $http.get("www.google.com")
+    $http.get("/gamedata")
     .then(function (response) {
     	$scope.dbGames = response.data;
     });
