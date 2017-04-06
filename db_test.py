@@ -7,7 +7,8 @@ from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from models import Game
+
+from models import Game, Publisher, Character
 
 #connect to database
 engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")

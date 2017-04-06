@@ -13,6 +13,7 @@ class Game(Base):
 	year = Column(Integer)
 	publisher = Column(String)
 	#num_players = Column(Integer)
+
 	#notable_char
 	avg_score = Column(String)
 	#systems = Column(String)
@@ -21,6 +22,7 @@ class Game(Base):
 	#what print will return	
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
+
 				self.name, self.year, self.publisher, self.avg_score, self.theme)
 	@property
 	def serialize(self): 
@@ -33,12 +35,14 @@ class Game(Base):
 			'theme' : self.theme
 		}
 
+
 class Publisher(Base):
 	__tablename__ = 'publishers'
 
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
 	#abbreviation = Column(String)
+
 	num_games = Column(Integer)
 	year_founded = Column(Integer)
 	country = Column(String)
