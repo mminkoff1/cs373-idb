@@ -118,9 +118,6 @@ p, h1, h3, h4 {
     font-family: 'Press Start 2P', cursive;
 }
 
-#gameTable{
-    visibility:hidden !important;
-}
 
 .navbar-inner {
     background:transparent;
@@ -146,4 +143,12 @@ p, h1, h3, h4 {
     1px -1px 0 white,
     -1px 1px 0 white,
     1px 1px 0 white;  
+}
+
+#game_table_length {
+    color:green !important;
+}
+
+#game_table_filter {
+    color:green !important;
 }

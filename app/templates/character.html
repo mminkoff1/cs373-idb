@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+
 </head>
 <body style="background-color: black;">
   <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
@@ -25,12 +27,12 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
-          <li><a href="/genre">Genre</a></li>
-          <li><a href="/publisher">Publisher</a></li>
+          <li><a href="/characters">Character</a></li>
+          <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
         </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
         <li><a href="#search">Search</a></li>
       </ul>
       </div>
@@ -40,20 +42,20 @@
   <div class= "container-fluid">
     <div class="row">
       <div class="col-md-4">
-     <img src="../static/images/Witcher_3_cover_art.jpg" class="img-responsive">
+     <img src = "{{ character.picture }}">
       </div>
 
       <div class="col-md-4">
-        <h1> Witcher 3: Wild Hunt</h1>
-        <p>The Witcher 3: Wild Hunt, officially announced in February 3, 2013, is an action-role playing video game developed by Polish studio, CD Projekt RED. It is the third title in The Witcher video game series, based on The Witcher saga, a collection of short stories by Polish author, Andrzej Sapkowski. For the first time in the history of the series, the game will be set in an open-world environment. The Witcher 3: Wild Hunt puts the players in the role of a professional monster hunter, Geralt of Rivia, the series’ main protagonist. According to CD Projekt RED, this installment will conclude Geralt's story. The game was released on May 19, 2015, on PC, PlayStation 4 and Xbox One. </p>
+        <h1 id="name"> {{ character.name }}</h1>
+        <div>
+        <p>Gender: {{ character.gender }} </p>
+        <p>Species: {{ character.species }} </p>
+        <p>Franchise: {{ character.franchise }} </p>
+        <p>Location: {{ character.location }} </p>
+        <p>Appears In: {{ character.first_game }} </p>
+        </div>
       </div>
 
-      <div class="col-md-4">
-        <h1>Genre</h1>
-        <a href="genreRPG">Role-Playing Game</a>
-
-        <h1>Publisher</h1>
-        <a href="publisherCDProjektRED">CD Projekt RED</a>
 
       </div>
     </div>
@@ -75,5 +77,15 @@
  <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
  <script src="../static/js/videoGameLookup.js"></script>
 
+     <script>
+    $(document).ready(function(){
+        var desc = $('#description').html();
+        console.log(desc);
+        html = $.parseHTML(desc);
+        $('#description').empty();
+        $('#desciption').append(html);
+        console.log(html);
+    });
+    </script>
 </body>
 </html>

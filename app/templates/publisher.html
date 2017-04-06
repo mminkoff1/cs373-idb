@@ -11,9 +11,10 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+
 </head>
 <body style="background-color: black;">
-
   <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -26,81 +27,52 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
-          <li><a href="/genre">Genre</a></li>
-          <li><a href="/publisher">Publisher</a></li>
+          <li><a href="/characters">Character</a></li>
+          <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
         </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
         <li><a href="#search">Search</a></li>
       </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container-fluid">
-    <table class="table table-bordered" id="tb" style="color: white;">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Country</th>
-          <th>Year Founded</th>
-          <th>Number of Franchises</th>
-          <th>Number of Games</th>
-        </tr>
-        <tr>
-      </thead>
+  <div class= "container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <img src = "{{ publisher.picture }}">
+      </div>
 
-<!--       <tbody>
-        {% for publisher in publishers %}
-        <tr>
-          <th scope="row">{{publisher.name}}</th>
-          <th>{{publisher.year_founded}}</th>
-          <th>{{publisher.country}}</th>
-          <th>{{publisher.num_franchises}}</th>
-          <th>{{publisher.num_games}}</th>
-        </tr>
-        {% endfor %}
-      </tbody> -->
-      
-        <tr>
-        <th> <a href = "publisherCDProjektRED"> CD Projekt RED </a></th>
-        <th> Poland </th>
-        <th> 1994 </th>
-        <th> 2</th>
-        <th> 6 </th>
-      </tr>
-      <tr>
-        <th> <a href = "publisher2k"> 2k Games </a></th>
-        <th>  USA </th>
-        <th>  2005 </th>
-        <th> 6 </th>
-        <th> 598 </th>
-       </tr>
-       <tr>
-        <th> <a href = "publisherMicrosoft"> Microsoft Studios </a></th>
-        <th> USA </th>
-        <th> 2002 </th>
-        <th> 562 </th>
-        <th> 2160 </th>
-        </tr>  
-      
-    </table>
+      <div class="col-md-4">
+        <h1 id="name"> {{ publisher.name }} </h1>
+        <div>
+        <p> Country: {{ publisher.country }} </p>
+        <p> Year Founded: {{ publisher.year_founded }} </p>
+        <p> Website: {{ publisher.website }} </p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
-    <button type="button" class="close" style="z-index: 9999;">x</button>
-    <form>
-      <input id="searchstring" type="search" value="" placeholder="Type your keywords here!" />
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/jquery.tablesorter.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
-    <script src="../static/js/videoGameLookup.js"></script>
+ <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="../static/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
+ <script src="../static/js/videoGameLookup.js"></script>
+ <script src="../static/js/jquery.tablesorter.min.js"></script>
 
-  </body>
-  </html>
+     <script>
+    $(document).ready(function(){
+        var desc = $('#description').html();
+        console.log(desc);
+        html = $.parseHTML(desc);
+        $('#description').empty();
+        $('#desciption').append(html);
+        console.log(html);
+    });
+    </script>
+</body>
+</html>

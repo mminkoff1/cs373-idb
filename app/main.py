@@ -38,9 +38,36 @@ def games():
 	return render_template("games.html",
 		games = data)
 
-@app.route('/genre/')
-def genre():
-	return render_template("genre.html")
+@app.route('/publishers/')
+def publishers():
+	return render_template("publishers.html",
+		publishers = session.query(Publisher).all())
+
+@app.route('/characters/')
+def characters():
+	return render_template("characters.html",
+		characters = session.query(Character).all())
+
+
+
+@app.route('/games/<int:game_id>')
+def get_game(game_id):
+	game = session.query(Game).filter(Game.ident == game_id).first()
+	character = session.query(Character).filter(game.characterid == Character.ident).first()
+	publisher = session.query(Publisher).filter(game.publisher == Publisher.name).first()
+
+	return render_template("game.html", game = game, character = character, publisher = publisher)
+
+@app.route('/publishers/<int:publisher_id>')
+def get_publisher(publisher_id):
+	publisher = session.query(Publisher).filter(Publisher.ident == publisher_id).one()
+	return render_template("publisher.html", publisher = publisher)
+
+@app.route('/characters/<int:character_id>')
+def get_character(character_id):
+	character = session.query(Character).filter(Character.ident == character_id).one()
+	return render_template("character.html", character = character)
+
 
 
 @app.route('/api/games/')
@@ -92,21 +119,6 @@ def get_character_id(character_id):
 	character = character.__dict__.copy()
 	character.pop('_sa_instance_state', None)
 	return jsonify(character)
-
-
-# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-
-# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
-@app.route('/shutdown', methods=['GET'])
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
-
 
 
 if __name__ == "__main__":

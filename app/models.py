@@ -17,6 +17,13 @@ class Game(Base):
 	avg_score = Column(String)
 	#systems = Column(String)
 	theme = Column(String)
+	picture = Column(String)
+	description = Column(String)
+	characterid = Column(String)
+	#what print will return	
+	def __repr__(self):
+		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
+				self.name, self.year, self.publisher, self.avg_score, self.theme)
 
 	@property
 	def serialize(self):
@@ -26,7 +33,10 @@ class Game(Base):
 			'year' : self.year,
 			'publisher' : self.publisher,
 			'avg_score' : self.avg_score,
-			'theme' : self.theme
+			'theme' : self.theme,
+			'picture' : self.picture,
+			'description' : self.description,
+			'characterid' : self.characterid
 		}
 
 
@@ -52,6 +62,7 @@ class Publisher(Base):
 	#num_franchises = Column(Integer)
 	#notable_games
 	website = Column(String)
+	picture = Column(String)
 
 	@property
 	def serialize(self): 
@@ -61,7 +72,8 @@ class Publisher(Base):
 			'num_games' : self.num_games,
 			'year_founded' : self.year_founded,
 			'country' : self.country,
-			'website' : self.website
+			'website' : self.website,
+			'picture' : self.picture
 		}
 
 
@@ -82,6 +94,8 @@ class Character(Base):
 	franchise = Column(String)
 	location = Column(String)
 	first_game = Column(String)
+	publid = Column(Integer)
+	picture = Column(String)
 
 	@property
 	def serialize(self): 
@@ -91,5 +105,14 @@ class Character(Base):
 			'gender' : self.gender,
 			'franchise' : self.franchise,
 			'location' : self.location,
-			'first_game' : self.first_game
+			'first_game' : self.first_game,
+			'picture' : self.picture,
+			'publid' : self.publid
 		}
+
+"""
+if __name__ == '__main__':
+	engine =  create_engine("")
+	Base.metadata.create_all(engine)
+"""
+
