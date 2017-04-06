@@ -25,21 +25,21 @@ session = Session()
 def splash():
 	return render_template("splash.html")
 
-@app.route('/about')
+@app.route('/about/')
 def about():
 	return render_template("about.html")
 
-@app.route('/games')
+@app.route('/games/')
 def games():
 	return render_template("games.html",
 		games = session.query(Game).all())
 
-@app.route('/genre')
+@app.route('/genre/')
 def genre():
 	return render_template("genre.html")
 
 
-@app.route('/api/games')
+@app.route('/api/games/')
 def gamedata():
 	try:
 		data = session.query(Game).all()
@@ -48,9 +48,16 @@ def gamedata():
 		#print (data)
 	return jsonify(games_list=[i.serialize for i in data])
 
+@app.route('/api/games/<int:game_id>/')
+def get_game_id(game_id):
+	game = session.query(Game).filter(Game.ident == game_id).one()
+	game = game.__dict__.copy()
+	game.pop('_sa_instance_state', None)
+	return jsonify(game)
 
-@app.route('/api/publishers')
-def gamedata():
+
+@app.route('/api/publishers/')
+def publisherdata():
 	try:
 		data = session.query(Publisher).all()
 	except:
@@ -58,15 +65,29 @@ def gamedata():
 		#print (data)
 	return jsonify(publishers_list=[i.serialize for i in data])
 
+@app.route('/api/publishers/<int:publisher_id>/')
+def get_publisher_id(publisher_id):
+	publisher = session.query(Publisher).filter(Publisher.ident == publisher_id).one()
+	publisher = publisher.__dict__.copy()
+	publisher.pop('_sa_instance_state', None)
+	return jsonify(publisher)
 
-@app.route('/api/characters')
-def gamedata():
+
+@app.route('/api/characters/')
+def characterdata():
 	try:
 		data = session.query(Character).all()
 	except:
 		data = "Failed :("
-		#print (data)
+		print (data)
 	return jsonify(characters_list=[i.serialize for i in data])
+
+@app.route('/api/characters/<int:character_id>/')
+def get_character_id(character_id):
+	character = session.query(Character).filter(Character.ident == character_id).one()
+	character = character.__dict__.copy()
+	character.pop('_sa_instance_state', None)
+	return jsonify(character)
 
 
 # SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #

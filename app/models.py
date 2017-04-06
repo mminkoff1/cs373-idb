@@ -13,7 +13,7 @@ class Game(Base):
 	year = Column(Integer)
 	publisher = Column(String)
 	#num_players = Column(Integer)
-        #notable_char
+	#notable_char
 	avg_score = Column(String)
 	#systems = Column(String)
 	theme = Column(String)
@@ -38,13 +38,18 @@ class Publisher(Base):
 
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
-        #abbreviation = Column(String)
+	#abbreviation = Column(String)
 	num_games = Column(Integer)
 	year_founded = Column(Integer)
 	country = Column(String)
 	#num_franchises = Column(Integer)
-        #notable_games
+	#notable_games
 	website = Column(String)
+
+	#what print will return	
+	def __repr__(self):
+		return  "<Publisher(name='%s', num_games='%s', year_founded='%s', country='%s', website='%s')>" % (
+				self.name, self.num_games, self.year_founded, self.country, self.website)
 
 	@property
 	def serialize(self): 
@@ -64,9 +69,9 @@ class Character(Base):
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
 	gender = Column(String)
-        species = Column(String)
-        num_games = Column(Integer)
-        first_game = Column(String)
+	franchise = Column(String)
+	location = Column(Integer)
+	first_game = Column(String)
 
 	@property
 	def serialize(self): 
@@ -74,8 +79,8 @@ class Character(Base):
 			'ident' : self.ident,
 			'name' : self.name,
 			'gender' : self.gender,
-			'species' : self.species,
-			'num_games' : self.num_games,
+			'franchise' : self.franchise,
+			'location' : self.location,
 			'first_game' : self.first_game
 		}
 
