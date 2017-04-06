@@ -40,7 +40,7 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
-          <li><a href="/characters">Genre</a></li>
+          <li><a href="/characters">Character</a></li>
           <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
@@ -59,10 +59,10 @@
       <thead>
         <tr id="tableHeader">
           <th style="background:white; font-family: 'Press Start 2P', cursive;">Name</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Gender</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Franchise</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Location</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">First Game</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Created</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Publisher</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Game Rating</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Theme</th>
         </tr>
       </thead>
     <tbody>
@@ -75,7 +75,7 @@
         <td>{{ character.first_game }}</td>
         </tr>
         {% endfor %}
-     </tbody> 
+     </tbody>  
     </table>
   </div>
 
@@ -94,7 +94,7 @@
 
     <script>
     $(document).ready(function(){
-        $('#character_table').DataTable();
+        $('#game_table').DataTable();
     });
     </script>
   </body>
