@@ -27,6 +27,15 @@ class Game(Base):
 class Publisher(Base):
 	__tablename__ = 'publishers'
 
+	def __init__(self, ident, name, num_games, year_founded, country, website):
+	    self.ident = ident
+	    self.name = name
+	    self.num_games = int(num_games)
+	    self.year_founded = year_founded
+	    self.country = country
+	    self.website = website
+
+
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
         #abbreviation = Column(String)
@@ -41,11 +50,19 @@ class Publisher(Base):
 class Character(Base):
 	__tablename__ = 'characters'
 
+	def __init__(self, ident, name, gender, franchise, location, first_game):
+	    self.ident = ident
+	    self.name = name
+	    self.gender = gender
+	    self.franchise = franchise
+	    self.location = location
+	    self.first_game = first_game
+
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
         gender = Column(String)
-        species = Column(String)
-        num_games = Column(Integer)
+        franchise = Column(String)
+        location = Column(String)
         first_game = Column(String)
 
 """

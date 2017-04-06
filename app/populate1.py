@@ -1,6 +1,8 @@
 import requests
 import json
 
+from models import Game, Publisher, Character
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Table, Column, Float, Integer, String, Boolean,ForeignKey, create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
@@ -65,6 +67,8 @@ headers = {
 publishermap = {}
 publishers = []
 '''
+**** GAMES CODE ****
+
 for i in range(0, 1):
 
 	url_craft = 'https://www.giantbomb.com/api/games/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json&offset=' + str(i * 100);
@@ -130,7 +134,13 @@ for i in range(0, 1):
 #session.query(Game).filter_by(ident=6).update({Game.publisher: u"EA GAMES"})
 
 session.commit()
+
+**** END GAMES ****
 '''
+
+'''
+***** PUBLISHERS CODE *****
+
 publishers = [r.publisher for r in session.query(Game.publisher).distinct()]
 
 ser = open('publisherout.txt', 'r').read()
@@ -148,7 +158,85 @@ for publ in publishers:
 
     json_data4 = r4.json()
 
-    print len(json_data4['results']['published_games'])
+    published_games = len(json_data4['results']['published_games'])
+
+    if json_data4['results']['date_founded'] == None:
+        date_found = None;
+    else:
+        date_found = int(json_data4['results']['date_founded'][:4])
+
+    location = json_data4['results']['location_country']
+    website = json_data4['results']['website']
+
+    publish = Publisher(pubid, publ, published_games, date_found, location, website)
+    print publ
+    print pubid
+
+    session.add(publish)
+
+
+session.commit()
+
+**** END PUBLISHERS ****
+'''
+
+charactersmap = []
+ser2 = open('characterout.txt', 'r').read()
+charactersmap = eval(ser2)
+
+for charid in charactersmap:
+    url_craft6 = 'https://www.giantbomb.com/api/character/' + str(charid) + '/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json'
+
+    r6 = requests.get(url_craft6, headers=headers)
+
+    json_data6 = r6.json()
+
+    print charid
+    charname = json_data6['results']['name']
+
+    chargender = json_data6['results']['gender']
+
+    print chargender
+    if chargender == None: 
+        chargender = 'N/A'
+    elif str(chargender) == "1":
+        chargender = "Male"
+    elif str(chargender) == "2":
+        chargender = "Female"
+    else:
+        chargender = "Other"
+
+    if len(json_data6['results']['franchises']) > 0: 
+        charfran = json_data6['results']['franchises'][0]['name']
+    else:
+        charfran = 'N/A'
+
+    if len(json_data6['results']['locations']) > 0:
+        charloc =  json_data6['results']['locations'][0]['name']
+    else:
+        charloc = 'N/A'
+
+    charfirst = json_data6['results']['first_appeared_in_game']['name']
+
+    publish = Character(charid, charname, chargender, charfran, charloc, charfirst)
+
+    session.add(publish)
+
+session.commit()
+'''
+ids = [r.ident for r in session.query(Game.ident).distinct()]
+
+for thisid in ids:
+    url_craft5 = 'https://www.giantbomb.com/api/game/' + str(thisid) + '/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json'
+
+    r5 = requests.get(url_craft5, headers=headers)
+
+    json_data5 = r5.json()
+
+    if json_data5['results']['characters'] != None:  
+        charactersmap.append(json_data5['results']['characters'][0]['id'])
+
+'''
 
 '''
 for i in range(0, 132):
