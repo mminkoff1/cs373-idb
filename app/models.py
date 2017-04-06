@@ -81,6 +81,8 @@ class Character(Base):
 	franchise = Column(String)
 	location = Column(Integer)
 	first_game = Column(String)
+	publid = Column(Integer)
+	picture = Column(String)
 
 	@property
 	def serialize(self): 
@@ -90,7 +92,9 @@ class Character(Base):
 			'gender' : self.gender,
 			'franchise' : self.franchise,
 			'location' : self.location,
-			'first_game' : self.first_game
+			'first_game' : self.first_game,
+			'picture' : self.picture,
+			'publid' : self.publid
 		}
 
 """
