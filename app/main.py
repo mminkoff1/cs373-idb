@@ -38,6 +38,12 @@ def games():
 def genre():
 	return render_template("genre.html")
 
+@app.route('/games/<int:game_id>')
+def get_game(game_id):
+	game = session.query(Game).filter(Game.ident == game_id).one()
+	game = game.__dict__.copy()
+	game.pop('_sa_instance_state', None)
+	return render_template("game.html", game =jsonify(game))
 
 @app.route('/api/games/')
 def gamedata():
@@ -88,21 +94,6 @@ def get_character_id(character_id):
 	character = character.__dict__.copy()
 	character.pop('_sa_instance_state', None)
 	return jsonify(character)
-
-
-# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-
-# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
-@app.route('/shutdown', methods=['GET'])
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
-
 
 
 if __name__ == "__main__":

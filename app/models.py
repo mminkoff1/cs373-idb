@@ -18,12 +18,14 @@ class Game(Base):
 	avg_score = Column(String)
 	#systems = Column(String)
 	theme = Column(String)
-
+	picture = Column(String)
+	description = Column(String)
+	
 	#what print will return	
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
-
 				self.name, self.year, self.publisher, self.avg_score, self.theme)
+
 	@property
 	def serialize(self): 
 		return {
@@ -32,7 +34,9 @@ class Game(Base):
 			'year' : self.year,
 			'publisher' : self.publisher,
 			'avg_score' : self.avg_score,
-			'theme' : self.theme
+			'theme' : self.theme,
+			'picture' : self.picture,
+			'description' : self.description
 		}
 
 
