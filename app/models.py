@@ -19,7 +19,7 @@ class Game(Base):
 	theme = Column(String)
 
 	@property
-	def serialize(self): 
+	def serialize(self):
 		return {
 			'ident' : self.ident,
 			'name' : self.name,

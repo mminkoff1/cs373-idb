@@ -31,8 +31,12 @@ def about():
 
 @app.route('/games/')
 def games():
+	try:
+		data = session.query(Game).all()
+	except:
+		data = "Failed :("
 	return render_template("games.html",
-		games = session.query(Game).all())
+		games = data)
 
 @app.route('/genre/')
 def genre():
