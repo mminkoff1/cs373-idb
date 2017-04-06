@@ -13,17 +13,18 @@ class Game(Base):
 	year = Column(Integer)
 	publisher = Column(String)
 	#num_players = Column(Integer)
-
 	#notable_char
 	avg_score = Column(String)
 	#systems = Column(String)
 	theme = Column(String)
 
+"""
 	#what print will return	
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
-
 				self.name, self.year, self.publisher, self.avg_score, self.theme)
+"""
+
 	@property
 	def serialize(self): 
 		return {
@@ -59,11 +60,6 @@ class Publisher(Base):
 	#notable_games
 	website = Column(String)
 
-	#what print will return	
-	def __repr__(self):
-		return  "<Publisher(name='%s', num_games='%s', year_founded='%s', country='%s', website='%s')>" % (
-				self.name, self.num_games, self.year_founded, self.country, self.website)
-
 	@property
 	def serialize(self): 
 		return {
@@ -89,10 +85,10 @@ class Character(Base):
 
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
-  gender = Column(String)
-  franchise = Column(String)
-  location = Column(String)
-  first_game = Column(String)
+	gender = Column(String)
+	franchise = Column(String)
+	location = Column(String)
+	first_game = Column(String)
 
 	@property
 	def serialize(self): 
@@ -104,9 +100,3 @@ class Character(Base):
 			'location' : self.location,
 			'first_game' : self.first_game
 		}
-
-"""
-if __name__ == '__main__':
-	engine =  create_engine("")
-	Base.metadata.create_all(engine)
-"""
