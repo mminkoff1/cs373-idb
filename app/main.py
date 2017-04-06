@@ -41,9 +41,8 @@ def genre():
 @app.route('/games/<int:game_id>')
 def get_game(game_id):
 	game = session.query(Game).filter(Game.ident == game_id).one()
-	game = game.__dict__.copy()
-	game.pop('_sa_instance_state', None)
-	return render_template("game.html", game =jsonify(game))
+	print(game)
+	return render_template("game.html", game = game)
 
 @app.route('/api/games/')
 def gamedata():
