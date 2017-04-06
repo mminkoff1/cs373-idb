@@ -54,7 +54,7 @@ class Publisher(Base):
 	#num_franchises = Column(Integer)
 	#notable_games
 	website = Column(String)
-	picture = Columnt(String)
+	picture = Column(String)
 
 	#what print will return	
 	def __repr__(self):
