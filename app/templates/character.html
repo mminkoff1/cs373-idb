@@ -42,16 +42,22 @@
   <div class= "container-fluid">
     <div class="row">
       <div class="col-md-4">
-     <img src = "{{ game.picture }}">
+     <img src = "{{ character.picture }}">
       </div>
 
       <div class="col-md-4">
-        <h1 id="name"> {{ game.name }}</h1>
-        <div id = "description">
-        <p>{{ game.description }} </p>
+        <h1 id="name"> {{ character.name }}</h1>
+        <div>
+        <p>Gender: {{ character.gender }} </p>
+        <p>Species: {{ character.species }} </p>
+        <p>Franchise: {{ character.franchise }} </p>
+        <p>Location: {{ character.location }} </p>
+        <p>First Game: {{ character.first_game }} </p>
         </div>
       </div>
 
+
+      </div>
     </div>
   </div>
 
