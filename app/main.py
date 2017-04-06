@@ -7,7 +7,7 @@ from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from models import Game, Publisher
+from models import Game, Publisher, Character
        
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
@@ -47,6 +47,26 @@ def gamedata():
 		data = "Failed :("
 		#print (data)
 	return jsonify(games_list=[i.serialize for i in data])
+
+
+@app.route('/api/publishers')
+def gamedata():
+	try:
+		data = session.query(Publisher).all()
+	except:
+		data = "Failed :("
+		#print (data)
+	return jsonify(publishers_list=[i.serialize for i in data])
+
+
+@app.route('/api/characters')
+def gamedata():
+	try:
+		data = session.query(Character).all()
+	except:
+		data = "Failed :("
+		#print (data)
+	return jsonify(characters_list=[i.serialize for i in data])
 
 
 # SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #

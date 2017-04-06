@@ -44,7 +44,18 @@ class Publisher(Base):
 	country = Column(String)
 	#num_franchises = Column(Integer)
         #notable_games
-        website = Column(String)
+	website = Column(String)
+
+	@property
+	def serialize(self): 
+		return {
+			'ident' : self.ident,
+			'name' : self.name,
+			'num_games' : self.num_games,
+			'year_founded' : self.year_founded,
+			'country' : self.country,
+			'website' : self.website
+		}
 
 
 class Character(Base):
@@ -52,10 +63,21 @@ class Character(Base):
 
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
-        gender = Column(String)
+	gender = Column(String)
         species = Column(String)
         num_games = Column(Integer)
         first_game = Column(String)
+
+	@property
+	def serialize(self): 
+		return {
+			'ident' : self.ident,
+			'name' : self.name,
+			'gender' : self.gender,
+			'species' : self.species,
+			'num_games' : self.num_games,
+			'first_game' : self.first_game
+		}
 
 """
 if __name__ == '__main__':
