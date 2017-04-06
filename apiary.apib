@@ -91,6 +91,72 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
         }
 
 
+## Game with Character Information [/games/{id}//characters]
+
+### List Game with Character Info [GET]
+
++ Parameters
+    + id (number) - ID of game
+
++ Response 200 (application/json)
+
+        {
+         "Character": [
+                {
+                    "id": 1,
+                    "name": "Name 1",
+                    "gender": "female",
+                    "franchise": "Franchise A"
+                    "location": "In Game Location",
+                    "first game": "Game A"
+                }
+            ],
+         "Game":[
+                {
+                    "id": 1234,
+                    "title": "Test game",
+                    "publisher": "Company 1",
+                    "theme": "Action",
+                    "year published": "2000",
+                    "average player score": "1234"
+                }
+            ]
+        }
+     
+        
+## Game with Publisher Information [/games/{id}//publishers]
+
+### List Game with Publisher Info [GET]
+
++ Parameters
+    + id (number) - ID of game
+
++ Response 200 (application/json)
+
+        {
+         "Publisher": [
+                {
+                    "id": 642,
+                    "title": "testcompany1",
+                    "year founded": "2000",
+                    "country": "country A",
+                    "website": "testweb.com",
+                    "number of games": 12
+                }
+            ],
+         "Game":[
+                {
+                    "id": 1234,
+                    "title": "Test game",
+                    "publisher": "Company 1",
+                    "theme": "Action",
+                    "year published": "2000",
+                    "average player score": "1234"
+                }
+            ]
+        }
+
+
 ## Publisher Collection [/publishers/]
 
 ### List Publisher Collection [GET]
@@ -143,6 +209,46 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
         }
 
 
+## Publisher with Games Information [/publishers/{id}//games]
+
+### List Publisher with Games Info [GET]
+
++ Parameters
+    + id (number) - ID of publisher
+
++ Response 200 (application/json)
+
+        {
+         "Games": [
+                {
+                    "id": 1234,
+                    "title": "Test game",
+                    "publisher": "Company 1",
+                    "theme": "Action",
+                    "year published": "2000",
+                    "average player score": "1234"
+                },
+                {
+                    "id": 1345,
+                    "title": "Test game2",
+                    "publisher": "Company 1",
+                    "theme": "Action",
+                    "year published": "2004",
+                    "average player score": "1432"
+                }
+            ],
+         "Publisher":[
+                {
+                    "id": 642,
+                    "title": "testcompany1",
+                    "year founded": "2000",
+                    "country": "country A",
+                    "website": "testweb.com",
+                    "number of games": 12
+                }
+            ]
+        }
+
 ## Character Collection [/characters/]
 
 ### List Character Collection [GET]
@@ -155,7 +261,7 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "id": 1,
                     "name": "Name 1",
                     "gender": "female",
-                    "franchise": "CompanyA"
+                    "franchise": "Franchise yA"
                     "location": "In Game Location",
                     "first game": "Game A"
                 },
@@ -163,7 +269,7 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "id": 2,
                     "name": "Name 2",
                     "gender": "male",
-                    "franchise": "CompanyB"
+                    "franchise": "Franchise B"
                     "location": "In Game Location",
                     "first game": "Game B"
                 }
@@ -186,7 +292,7 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "id": 1,
                     "name": "Name 1",
                     "gender": "female",
-                    "franchise": "CompanyA"
+                    "franchise": "Franchise A"
                     "location": "In Game Location",
                     "first game": "Game A"
                 }
