@@ -113,6 +113,15 @@ p, h1, h3, h4 {
     top: 30%;
 }
 
+#tableHeader{
+    background: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#gameTable{
+    visibility:hidden !important;
+}
+
 .navbar-inner {
     background:transparent;
     border: transparent;
