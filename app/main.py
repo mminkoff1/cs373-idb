@@ -2,7 +2,7 @@
 import sys, traceback
 sys.path.insert(0, './app/')
 
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -21,11 +21,6 @@ Session = sessionmaker(bind = engine)
 session = Session()
 
 
-# for x in data:
-# 	#encode to UTF-8 in case of any non-ASCII characters
-# 	s = unicode(x.avg_score).encode('utf8')
-# 	print s
-
 @app.route('/')
 def splash():
 	return render_template("splash.html")
@@ -36,22 +31,36 @@ def about():
 
 @app.route('/games')
 def games():
-	return render_template("games.html")
+	return render_template("games.html",
+		games = session.query(Game).all())
 
 @app.route('/genre')
 def genre():
 	return render_template("genre.html")
 
-@app.route('/gamedata')
+
+@app.route('/api/games')
 def gamedata():
 	try:
 		data = session.query(Game).all()
 	except:
 		data = "Failed :("
 		#print (data)
-	return jsonify(data)
+	return jsonify(games_list=[i.serialize for i in data])
 
 
+# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
+@app.route('/shutdown', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
 
 
 

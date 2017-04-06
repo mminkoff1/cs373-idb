@@ -6,38 +6,56 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 
 class Game(Base):
-	__tablename__ = 'game'
+	__tablename__ = 'games'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
 	year = Column(Integer)
 	publisher = Column(String)
-	num_players = Column(Integer)
-	avg_score = Column(Integer)
-	systems = Column(String)
+	#num_players = Column(Integer)
+        #notable_char
+	avg_score = Column(String)
+	#systems = Column(String)
 	theme = Column(String)
 
+	#what print will return	
+	def __repr__(self):
+		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
+				self.name, self.year, self.publisher, self.avg_score, self.theme)
+	@property
+	def serialize(self): 
+		return {
+			'ident' : self.ident,
+			'name' : self.name,
+			'year' : self.year,
+			'publisher' : self.publisher,
+			'avg_score' : self.avg_score,
+			'theme' : self.theme
+		}
 
 class Publisher(Base):
-	__tablename__ = 'publisher'
+	__tablename__ = 'publishers'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
+        #abbreviation = Column(String)
 	num_games = Column(Integer)
 	year_founded = Column(Integer)
 	country = Column(String)
-	num_franchises = Column(Integer)
+	#num_franchises = Column(Integer)
+        #notable_games
+        website = Column(String)
 
 
-class Genre(Base):
-	__tablename__ = 'genre'
+class Character(Base):
+	__tablename__ = 'characters'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
-	num_games = Column(Integer)
-	avg_rating = Column(Integer)
-	rel_genre = Column(String)
-	popularity = Column(Integer)
+        gender = Column(String)
+        species = Column(String)
+        num_games = Column(Integer)
+        first_game = Column(String)
 
 """
 if __name__ == '__main__':
