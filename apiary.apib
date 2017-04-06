@@ -31,9 +31,9 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "image": "image source"  
                 },
                 {
-                    "type": "Genre",
-                    "title": "Test Genre",
-                    "route": "/genre/1234",
+                    "type": "Character",
+                    "name": "PersonA",
+                    "route": "/characters/1234",
                     "image": "image source"  
                 }
             ]
@@ -104,7 +104,7 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "title": "testcompany1",
                     "year founded": "2000",
                     "country": "country A",
-                    "number of franchises": 12,
+                    "website": "testweb.com",
                     "number of games": 12
                 },
                 {
@@ -112,7 +112,7 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "name": "testcompany2",
                     "year founded": "2014",
                     "country": "country B",
-                    "number of franchises": 12,
+                    "website": "testweb2.com",
                     "number of games": 234
                 }
             ]
@@ -136,59 +136,59 @@ GameLookup is your one-stop-shop for all you curious gamer needs.
                     "title": "testcompany1",
                     "year founded": "2000",
                     "country": "country A",
-                    "number of franchises": 12,
+                    "website": "testweb.com",
                     "number of games": 12
                 }
             ]
         }
 
 
-## Genre Collection [/genres/]
+## Character Collection [/characters/]
 
-### List Genre Collection [GET]
+### List Character Collection [GET]
 
 + Response 200 (application/json)
 
         {
-         "Genres": [
+         "Character": [
                 {
                     "id": 1,
-                    "name": "Action",
-                    "number of games": 12345,
-                    "average score": "rating"
-                    "popularity": "popular",
-                    "related genres": ["genre1", "genre2", "genre3"]
+                    "name": "Name 1",
+                    "gender": "female",
+                    "franchise": "CompanyA"
+                    "location": "In Game Location",
+                    "first game": "Game A"
                 },
                 {
                     "id": 2,
-                    "name": "Adventure",
-                    "number of games": 12345,
-                    "average score": "rating"
-                    "popularity": "popular",
-                    "related genres": ["genre1", "genre2"]
+                    "name": "Name 2",
+                    "gender": "male",
+                    "franchise": "CompanyB"
+                    "location": "In Game Location",
+                    "first game": "Game B"
                 }
             ]
         }
 
 
-## Genre Information [/genres/{id}]
+## Character Information [/characters/{id}]
 
-### Get Genre Info [GET]
+### Get Character Info [GET]
 
 + Parameters
-    + id (number) - ID of genre/theme
+    + id (number) - ID of character
 
 + Response 200 (application/json)
 
         {
-         "Genre": [
+         "Character": [
                 {
                     "id": 1,
-                    "name": "Action",
-                    "number of games": 12345,
-                    "average rating": "rating"
-                    "popularity": "popular",
-                    "related genres": ["genre1", "genre2", "genre3"]
+                    "name": "Name 1",
+                    "gender": "female",
+                    "franchise": "CompanyA"
+                    "location": "In Game Location",
+                    "first game": "Game A"
                 }
             ]
         }
