@@ -55,24 +55,15 @@
   </nav>
 
   <div class="container-fluid">
-    <table class="table table-bordered"  style="color: white;" id="myTable">
+    <table class="table table-bordered" id="gameTable">
       <thead>
-        <tr>
-          <th><a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
-              ajhdfbvjfd
-            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-            </th></a>
-          <th><a href="#" ng-click="sortType = 'publisher'; sortReverse = !sortReverse">
-              Publisher</th></a>
-          <th><a href="#" ng-click="sortType = 'theme'; sortReverse = !sortReverse">
-              Theme</th></a>
-          <th><a href="#" ng-click="sortType = 'published_year'; sortReverse = !sortReverse">
-              Year Published</th></a>
-          <th><a href="#" ng-click="sortType = 'avg_score'; sortReverse = !sortReverse">
-              Average Score</th></a>
+        <tr id="tableHeader">
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Name</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Created</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Publisher</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Game Rating</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Theme</th>
         </tr>
-        <tr>
       </thead>
     <tbody>
         {% for game in games %}
@@ -105,7 +96,7 @@
 
     <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#gameTable').DataTable();
     });
     </script>
   </body>
