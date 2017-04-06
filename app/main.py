@@ -48,11 +48,11 @@ def characters():
 
 @app.route('/games/<int:game_id>')
 def get_game(game_id):
-	game = session.query(Game).filter(Game.ident == game_id).one()
-	#character = session.query(Character).filter(Game.characterid == Character.ident).one()
-	#publisher = session.query(Publisher).filter(Game.publisher == Publisher.name).one()
+	game = session.query(Game).filter(Game.ident == game_id).first()
+	character = session.query(Character).filter(game.characterid == Character.ident).first()
+	publisher = session.query(Publisher).filter(game.publisher == Publisher.name).first()
 
-	return render_template("game.html", game = game)
+	return render_template("game.html", game = game, character = character, publisher = publisher)
 
 @app.route('/publishers/<int:publisher_id>')
 def get_publisher(publisher_id):
