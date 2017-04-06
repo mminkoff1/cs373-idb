@@ -34,15 +34,34 @@ def games():
 	return render_template("games.html",
 		games = session.query(Game).all())
 
-@app.route('/genre/')
-def genre():
-	return render_template("genre.html")
+@app.route('/publishers/')
+def publishers():
+	return render_template("publishers.html",
+		publishers = session.query(Publisher).all())
+
+@app.route('/characters/')
+def characters():
+	return render_template("characters.html",
+		characters = session.query(Character).all())
+
+
 
 @app.route('/games/<int:game_id>')
 def get_game(game_id):
 	game = session.query(Game).filter(Game.ident == game_id).one()
-	print(game)
 	return render_template("game.html", game = game)
+
+@app.route('/publishers/<int:publisher_id>')
+def get_publisher(publisher_id):
+	publisher = session.query(Publisher).filter(Publisher.ident == publisher_id).one()
+	return render_template("publisher.html", publisher = publisher)
+
+@app.route('/characters/<int:character_id>')
+def get_character(character_id):
+	character = session.query(Character).filter(Character.ident == character_id).one()
+	return render_template("character.html", character = character)
+
+
 
 @app.route('/api/games/')
 def gamedata():

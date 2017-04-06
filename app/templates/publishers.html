@@ -59,20 +59,20 @@
       <thead>
         <tr id="tableHeader">
           <th style="background:white; font-family: 'Press Start 2P', cursive;">Name</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Created</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Publisher</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Game Rating</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Theme</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Number of Games</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Founded</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Country</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Website</th>
         </tr>
       </thead>
     <tbody>
-        {% for game in games %}
+        {% for publisher in publishers %}
         <tr>
-        <td><a href="{{ game.ident }}">{{ game.name }}</a></td>
-        <td>{{ game.year }}</td>
-        <td>{{ game.publisher }}</td>
-        <td>{{ game.avg_score }}</td>
-        <td>{{ game.theme }}</td>
+        <td><a href="{{ publisher.ident }}">{{ publisher.name }}</a></td>
+        <td>{{ publisher.num_games }}</td>
+        <td>{{ publisher.year_founded }}</td>
+        <td>{{ publisher.country }}</td>
+        <td>{{ publisher.website }}</td>
         </tr>
         {% endfor %}
      </tbody> 

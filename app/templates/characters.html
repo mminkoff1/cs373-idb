@@ -59,20 +59,20 @@
       <thead>
         <tr id="tableHeader">
           <th style="background:white; font-family: 'Press Start 2P', cursive;">Name</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Created</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Publisher</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Game Rating</th>
-          <th style="background:white; font-family: 'Press Start 2P', cursive;">Theme</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Gender</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Franchise</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Location</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">First Game</th>
         </tr>
       </thead>
     <tbody>
-        {% for game in games %}
+        {% for character in characters %}
         <tr>
-        <td><a href="{{ game.ident }}">{{ game.name }}</a></td>
-        <td>{{ game.year }}</td>
-        <td>{{ game.publisher }}</td>
-        <td>{{ game.avg_score }}</td>
-        <td>{{ game.theme }}</td>
+        <td><a href="{{ character.ident }}">{{ character.name }}</a></td>
+        <td>{{ character.gender }}</td>
+        <td>{{ character.franchise }}</td>
+        <td>{{ character.location }}</td>
+        <td>{{ character.first_game }}</td>
         </tr>
         {% endfor %}
      </tbody> 
@@ -94,7 +94,7 @@
 
     <script>
     $(document).ready(function(){
-        $('#game_table').DataTable();
+        $('#character_table').DataTable();
     });
     </script>
   </body>
