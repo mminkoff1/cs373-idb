@@ -46,8 +46,10 @@
       </div>
 
       <div class="col-md-4">
-        <h1> {{ game.name }}</h1>
+        <h1 id="name"> {{ game.name }}</h1>
+        <div id = "description">
         <p>{{ game.description }} </p>
+        </div>
       </div>
 
       <div class="col-md-4">
@@ -77,5 +79,13 @@
  <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
  <script src="../static/js/videoGameLookup.js"></script>
 
+     <script>
+    $(document).ready(function(){
+        var desc = $('#description').html();
+        console.log(desc);
+        html = $.parseHTML(desc);
+        $('#description').empty();
+    });
+    </script>
 </body>
 </html>
