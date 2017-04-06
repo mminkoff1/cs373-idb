@@ -8,7 +8,7 @@ Base = declarative_base()
 class Game(Base):
 	__tablename__ = 'games'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
 	year = Column(Integer)
 	publisher = Column(String)
@@ -18,11 +18,16 @@ class Game(Base):
 	#systems = Column(String)
 	theme = Column(String)
 
+	#what print will return	
+	def __repr__(self):
+		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
+				self.name, self.year, self.publisher, self.avg_score, self.theme) 
+
 
 class Publisher(Base):
 	__tablename__ = 'publishers'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
         #abbreviation = Column(String)
 	num_games = Column(Integer)
@@ -36,10 +41,10 @@ class Publisher(Base):
 class Character(Base):
 	__tablename__ = 'characters'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
         gender = Column(String)
-        species = Column(Strinng)
+        species = Column(String)
         num_games = Column(Integer)
         first_game = Column(String)
 
