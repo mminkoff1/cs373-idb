@@ -131,12 +131,26 @@ for i in range(0, 1):
 
 session.commit()
 '''
-#publishers = [r.publisher for r in session.query(Game.publisher).distinct()]
+publishers = [r.publisher for r in session.query(Game.publisher).distinct()]
 
-#ser = open('publisherout.txt', 'r').read()
-#publishers = eval(ser)
+ser = open('publisherout.txt', 'r').read()
+publishersmap = eval(ser)
 
+for publ in publishers:
 
+    if publ != 'N/A':
+        pubid = publishersmap.get(publ)
+    else:
+        continue
+
+    url_craft4 = 'https://www.giantbomb.com/api/company/' + str(pubid) + '/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json'
+    r4 = requests.get(url_craft4, headers=headers)
+
+    json_data4 = r4.json()
+
+    print len(json_data4['results']['published_games'])
+
+'''
 for i in range(0, 132):
     url_craft3 = 'https://www.giantbomb.com/api/companies/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json&offset=' + str(i * 100)
     r3 = requests.get(url_craft3, headers=headers)
@@ -154,5 +168,5 @@ for i in range(0, 132):
 #print newpubmap
 
 print publishermap
-
+'''
 #print "1"
