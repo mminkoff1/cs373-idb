@@ -1,185 +1,109 @@
-from flask import Flask, render_template
-#import os
-#from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
-#from sqlalchemy.ext.declarative import declarative_base
-#from flask_sqlalchemy import SQLAlchemy
 
+import sys, traceback
+sys.path.insert(0, './app/')
+
+from flask import Flask, render_template, jsonify, request
+from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine, func
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+from models import Game, Publisher, Character
+       
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
-'''
-# Load default config and override config from an environment variable
-app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'flaskr.db'),
-    SECRET_KEY='development key',
-    USERNAME='admin',
-    PASSWORD='default'
-))
-
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-
-db = SQLAlchemy(app)
-
-class Game(db.Model):
-	__tablename__ = 'game'
-
-	id = Column(Integer, primary_key=True)
-	name = Column(String)
-	year = Column(Integer)
-	publisher = Column(String)
-	num_players = Column(Integer)
-	avg_score = Column(Integer)
-	systems = Column(String)
-	theme = Column(String)
 
 
-class Publisher(db.Model):
-	__tablename__ = 'publisher'
+#connect to database
+engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")
 
-	id = Column(Integer, primary_key=True)
-	name = Column(String)
-	num_games = Column(Integer)
-	year_founded = Column(Integer)
-	country = Column(String)
-	num_franchises = Column(Integer)
+Session = sessionmaker(bind = engine)
+session = Session()
 
-
-class Genre(db.Model):
-	__tablename__ = 'genre'
-
-	id = Column(Integer, primary_key=True)
-	name = Column(String)
-	num_games = Column(Integer)
-	avg_rating = Column(Integer)
-	rel_genre = Column(String)
-	popularity = Column(Integer)
-'''
 
 @app.route('/')
 def splash():
 	return render_template("splash.html")
 
-@app.route('/about')
+@app.route('/about/')
 def about():
 	return render_template("about.html")
 
-@app.route('/games')
+@app.route('/games/')
 def games():
-	return render_template("games.html")
+	return render_template("games.html",
+		games = session.query(Game).all())
 
-@app.route('/genre')
+@app.route('/genre/')
 def genre():
 	return render_template("genre.html")
 
-@app.route('/publisher')
-def publisher():
-	return render_template("publisher.html")
 
-@app.route('/gameWitcher3')
-def witcher():
-	return render_template("gameWitcher3.html")
+@app.route('/api/games/')
+def gamedata():
+	try:
+		data = session.query(Game).all()
+	except:
+		data = "Failed :("
+		#print (data)
+	return jsonify(games_list=[i.serialize for i in data])
 
-@app.route('/gameHalo5')
-def halo5():
-	return render_template("gameHalo5.html")
+@app.route('/api/games/<int:game_id>/')
+def get_game_id(game_id):
+	game = session.query(Game).filter(Game.ident == game_id).one()
+	game = game.__dict__.copy()
+	game.pop('_sa_instance_state', None)
+	return jsonify(game)
 
-@app.route('/gameCivV')
-def civv():
-	return render_template("gameCivV.html")
 
-@app.route('/publisherCDProjektRED')
-def projectred():
-	return render_template("publisherCDProjektRED.html")
+@app.route('/api/publishers/')
+def publisherdata():
+	try:
+		data = session.query(Publisher).all()
+	except:
+		data = "Failed :("
+		#print (data)
+	return jsonify(publishers_list=[i.serialize for i in data])
 
-@app.route('/publisher2k')
-def twok():
-	return render_template("publisher2k.html")
+@app.route('/api/publishers/<int:publisher_id>/')
+def get_publisher_id(publisher_id):
+	publisher = session.query(Publisher).filter(Publisher.ident == publisher_id).one()
+	publisher = publisher.__dict__.copy()
+	publisher.pop('_sa_instance_state', None)
+	return jsonify(publisher)
 
-@app.route('/publisherMicrosoft')
-def microsoft():
-	return render_template("publisherMicrosoft.html")
 
-@app.route('/genreRPG')
-def rpg():
-	return render_template("genreRPG.html")
+@app.route('/api/characters/')
+def characterdata():
+	try:
+		data = session.query(Character).all()
+	except:
+		data = "Failed :("
+		print (data)
+	return jsonify(characters_list=[i.serialize for i in data])
 
-@app.route('/genreFPS')
-def fps():
-	return render_template("genreFPS.html")
+@app.route('/api/characters/<int:character_id>/')
+def get_character_id(character_id):
+	character = session.query(Character).filter(Character.ident == character_id).one()
+	character = character.__dict__.copy()
+	character.pop('_sa_instance_state', None)
+	return jsonify(character)
 
-@app.route('/genreTBS')
-def tbs():
-	return render_template("genreTBS.html")
+
+# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+# SHUTDOWN CODE FOR DEBUGGING -REMOVE BEFORE DEPLOYING #
+@app.route('/shutdown', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
 
 
 
 if __name__ == "__main__":
-	'''
-	db.create_all()				# Only want to do this once, this is just here for demonstration
-	
-	game = Game()
-	game.name = "The Witcher 3"
-	game.year = 2015
-	game.theme = "Action RPG"
-	game.publisher = "CD Projekt RED"
-	db.session.add(game)
-
-	game = Game()
-	game.name = "Dark Souls III"
-	game.year = 2016
-	game.theme = "Action RPG"
-	game.publisher = "Bandai Namco"
-	db.session.add(game)
-
-	game = Game()
-	game.name = "Half-Life 2"
-	game.year = 2004
-	game.theme = "FPS"
-	game.publisher = "Valve"
-	db.session.add(game)
-
-	publisher = Publisher()
-	publisher.name = "CD Projekt RED"
-	publisher.country = "Poland"
-	publisher.year_founded = 1994
-	publisher.num_franchises = 1
-	db.session.add(publisher)
-
-	publisher = Publisher()
-	publisher.name = "Bandai Namco"
-	publisher.country = "Japan"
-	publisher.year_founded = 2015
-	publisher.num_franchises = 1
-	db.session.add(publisher)
-
-	publisher = Publisher()
-	publisher.name = "Valve"
-	publisher.country = "USA"
-	publisher.year_founded = 1996
-	publisher.num_franchises = 1
-	db.session.add(publisher)
-
-	genre = Genre()
-	genre.name = "Action RPG"
-	genre.num_games = 2
-	genre.avg_rating = 9
-	genre.popularity = 1
-	db.session.add(genre)
-
-	genre = Genre()
-	genre.name = "Adventure"
-	genre.num_games = 4
-	genre.avg_rating = 8
-	genre.popularity = 3
-	db.session.add(genre)
-
-	genre = Genre()
-	genre.name = "FPS"
-	genre.num_games = 2
-	genre.avg_rating = 9
-	genre.popularity = 1
-	db.session.add(genre)
-
-	db.session.commit()
-	'''
 	app.run()
