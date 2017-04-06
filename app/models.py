@@ -8,13 +8,13 @@ Base = declarative_base()
 class Game(Base):
 	__tablename__ = 'games'
 
-	id = Column(Integer, primary_key=True)
+	ident = Column(Integer, primary_key=True)
 	name = Column(String)
 	year = Column(Integer)
 	publisher = Column(String)
 	#num_players = Column(Integer)
         #notable_char
-	avg_score = Column(Integer)
+	avg_score = Column(String)
 	#systems = Column(String)
 	theme = Column(String)
 
