@@ -20,7 +20,7 @@ class Game(Base):
 	theme = Column(String)
 	picture = Column(String)
 	description = Column(String)
-	
+	characterid = Column(String)
 	#what print will return	
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
@@ -36,7 +36,8 @@ class Game(Base):
 			'avg_score' : self.avg_score,
 			'theme' : self.theme,
 			'picture' : self.picture,
-			'description' : self.description
+			'description' : self.description,
+			'characterid' : self.characterid
 		}
 
 
