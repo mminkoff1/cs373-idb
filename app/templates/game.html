@@ -47,8 +47,8 @@
 
       <div class="col-md-4">
         <h1 id="name"> {{ game.name }}</h1>
-        <div id = "description">
-        <p>{{ game.description }} </p>
+        <div>
+        <p id = "description">{{ game.description }} </p>
         </div>
       </div>
 
@@ -83,10 +83,9 @@
     $(document).ready(function(){
         var desc = $('#description').html();
         console.log(desc);
-        html = $.parseHTML(desc);
-        $('#description').empty();
-        $('#desciption').append(html);
-        console.log(html);
+        desc = desc.replace(/<(?:.|\n)*?>/gm,"");
+        console.log(desc);
+        $('#description').empty().prepend(desc);
     });
     </script>
 </body>
