@@ -52,7 +52,8 @@
         <p>Species: {{ character.species }} </p>
         <p>Franchise: {{ character.franchise }} </p>
         <p>Location: {{ character.location }} </p>
-        <p>Appears In: {{ character.first_game }} </p>
+        <p>Appears In:</p>
+        <a href="../games/{{ game.ident }}">{{ character.first_game }}</a>
         </div>
       </div>
 

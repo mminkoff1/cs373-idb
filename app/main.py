@@ -66,7 +66,9 @@ def get_publisher(publisher_id):
 @app.route('/characters/<int:character_id>')
 def get_character(character_id):
 	character = session.query(Character).filter(Character.ident == character_id).one()
-	return render_template("character.html", character = character)
+	game = session.query(Game).filter(character.first_game == Game.name).first()
+
+	return render_template("character.html", character = character, game = game)
 
 
 
