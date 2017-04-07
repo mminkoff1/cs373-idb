@@ -8,6 +8,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 from models import Game, Publisher, Character
+
+import os
+import subprocess
        
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
@@ -119,6 +122,20 @@ def get_character_id(character_id):
 	character = character.__dict__.copy()
 	character.pop('_sa_instance_state', None)
 	return jsonify(character)
+
+#Taken from Sethalopod github
+@app.route('/test')
+def test():
+
+    script_dir = os.path.dirname(__file__)
+    rel_path = "tests.py"
+    try:
+    	process = subprocess.check_output(["python", os.path.join(script_dir, rel_path)],
+    		stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+    	process = e.output
+
+	return process.decode("utf-8") 
 
 
 if __name__ == "__main__":
