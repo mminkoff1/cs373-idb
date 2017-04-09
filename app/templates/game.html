@@ -7,7 +7,6 @@
   <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
   <script src="../static/js/bootstrap.min.js"></script>
   <link rel="stylesheet" media="screen" href="../static/css/custom.css">
-  <script type="text/javascript" src="../static/js/videoGameLookup.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
@@ -42,16 +41,12 @@
   <div class= "container-fluid">
     <div class="row">
       <div class="col-md-4">
-     <img src = "{{ game.picture }}">
+     <img src = "{{ game.picture }}" img class="img-responsive">
       </div>
 
       <div class="col-md-4">
         <h1 id="name"> {{ game.name }}</h1>
-        <div>
-        <p id = "description">{{ game.description }} </p>
-        </div>
-      </div>
-
+        <div id = "description" style="color:white;"> {{ game.description }} </div>
       <div class="col-md-4">
         <h1> Character</h1>
         <a href="../characters/{{ character.ident }}">{{ character.name }}</a>
@@ -77,15 +72,18 @@
  <script src="http://code.jquery.com/jquery.js"></script>
  <script src="../static/js/bootstrap.min.js"></script>
  <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
- <script src="../static/js/videoGameLookup.js"></script>
 
      <script>
     $(document).ready(function(){
-        var desc = $('#description').html();
+        var desc = $('#description').text();
+        desc = desc.replace(/\<(.*?)\>/g,"");
+        desc = desc.replace(/  +/g, ' ');
         console.log(desc);
-        desc = desc.replace(/<(?:.|\n)*?>/gm,"");
-        console.log(desc);
-        $('#description').empty().prepend(desc);
+        $('#description').text('');
+        $('#description').text(desc);
+
+        //$("description2").text(desc);        
+
     });
     </script>
 </body>
