@@ -8,9 +8,9 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from models import Game, Publisher, Character
+from models import Game, Publisher, Character, app
       
-app = Flask(__name__)
+
 
 '''
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
@@ -34,7 +34,7 @@ def about():
 @app.route('/games/')
 def games():
 	try:
-		data = Game.query.get('name')
+		data = Game.query.all()
 		return render_template("games.html",
 			games = data)
 	except:

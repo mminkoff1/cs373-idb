@@ -5,9 +5,6 @@ from sqlalchemy.orm import relationship
 from flask import Flask
 
 app = Flask(__name__)
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10?host=/gamelookup'
-
-
 app.config[
     'SQLALCHEMY_DATABASE_URI'] =                                    \
     'postgres://postgres:seanpickupyourphone@35.184.159.10/gamelookup'
@@ -15,7 +12,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10/gamelookup?host=/cloudsql/game-lookup:us-central1:gamelookup'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
