@@ -13,6 +13,14 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
 
+"""
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10?host=/cloudsql/gamelookup'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+"""
 
 #connect to database
 engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")
