@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Game, Publisher, Character
       
 app = Flask(__name__)
-#bep
+
 '''
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
