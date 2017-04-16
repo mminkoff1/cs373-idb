@@ -4,29 +4,23 @@ sys.path.insert(0, './app/')
 
 from flask import Flask, render_template, jsonify, request
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine, func
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 from models import Game, Publisher, Character
-       
-app = Flask(__name__)
+      
+app = Flask(__name__) 
+'''
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
-
-"""
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10?host=/cloudsql/gamelookup'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-"""
 
 #connect to database
 engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")
 
 Session = sessionmaker(bind = engine)
 session = Session()
+'''
 
 
 @app.route('/')
@@ -40,29 +34,30 @@ def about():
 @app.route('/games/')
 def games():
 	try:
-		data = session.query(Game).all()
+		data = Game.query.get('name')
+		return render_template("games.html",
+			games = data)
 	except:
 		data = "Failed :("
-	return render_template("games.html",
-		games = data)
+		return (data)
 
 @app.route('/publishers/')
 def publishers():
 	return render_template("publishers.html",
-		publishers = session.query(Publisher).all())
+		publishers = Publisher.query.all())
 
 @app.route('/characters/')
 def characters():
 	return render_template("characters.html",
-		characters = session.query(Character).all())
+		characters = Character.query.all())
 
 
 
 @app.route('/games/<int:game_id>')
 def get_game(game_id):
-	game = session.query(Game).filter(Game.ident == game_id).first()
-	character = session.query(Character).filter(game.characterid == Character.ident).first()
-	publisher = session.query(Publisher).filter(game.publisher == Publisher.name).first()
+	game = Game.query.filter(Game.ident == game_id).first()
+	character = Character.query.filter(game.characterid == Character.ident).first()
+	publisher = Publisher.queryfilter(game.publisher == Publisher.name).first()
 
 	return render_template("game.html", game = game, character = character, publisher = publisher)
 
