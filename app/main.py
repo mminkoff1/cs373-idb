@@ -23,7 +23,6 @@ Session = sessionmaker(bind = engine)
 session = Session()
 '''
 
-UWAGA
 @app.route('/')
 def splash():
 	return render_template("splash.html")
