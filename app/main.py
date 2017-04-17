@@ -8,12 +8,21 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+<<<<<<< HEAD
 from models import Game, Publisher, Character, app
 import os
 import subprocess
 
 
 '''
+=======
+from models import Game, Publisher, Character
+
+import os
+import subprocess
+       
+app = Flask(__name__)
+>>>>>>> 4e8fe394982d7af228fe96a680c697d59e699a13
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
 
@@ -123,7 +132,8 @@ def get_character_id(character_id):
 	character.pop('_sa_instance_state', None)
 	return jsonify(character)
 
-@app.route('/test/')
+#Taken from Sethalopod github
+@app.route('/test')
 def test():
     script_dir = os.path.dirname(__file__)
     rel_path = "tests.py"
@@ -133,7 +143,7 @@ def test():
     except subprocess.CalledProcessError as e:
     	process = e.output
 
-    return process.decode("utf-8")
+	return process.decode("utf-8") 
 
 
 if __name__ == "__main__":
