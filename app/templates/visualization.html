@@ -12,6 +12,8 @@
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
 
+   <script src="../static/js/angular.min.js"></script>
+
 
 </head>
 <body style="background-color: black;">
@@ -40,12 +42,12 @@
     </div>
   </nav>
 
-  <div class= "container-fluid">
+  <div class= "container-fluid" ng-app="VideoGameLookup" ng-controller="thronesController">
     <div class = "row">
     <div class = "col-md-4">
     </div>
       <div class ="col-md-4">
-      <h1> GOT Houses by Location</h1>
+      <h1> {{ data }}</h1>
     </div>
     <div class = "col-md-4"></div>
   </div>
@@ -65,6 +67,12 @@
  <script src="../static/js/videoGameLookup.js"></script>
  <script src="../static/js/jquery.tablesorter.min.js"></script>
   <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- Modules -->
+  <script src="../static/js/app.js"></script>
+
+  <!-- Controllers -->
+  <script src="../static/js/controllers/thronesController.js"></script>
 
  <script>
     $(document).ready(function(){
