@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Game Lookup</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
+  <script src="../static/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" media="screen" href="../static/css/custom.css">
+  <script type="text/javascript" src="../static/js/videoGameLookup.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+
+</head>
+<body style="background-color: black;">
+  <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-ex"> <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Game Lookup</a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse-ex">
+        <ul class="nav navbar-nav">
+          <li><a href="/characters">Character</a></li>
+          <li><a href="/publishers">Publisher</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/about">About us</a></li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
+        <li><a href="#search">Search</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class= "container-fluid">
+    <div class="row">
+      <div id = "chart">
+      <p> Pie chart goes here </p>
+    </div>
+    </div>
+  </div>
+
+
+ <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="../static/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
+ <script src="../static/js/videoGameLookup.js"></script>
+ <script src="../static/js/jquery.tablesorter.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+ <script>
+    $(document).ready(function(){
+      var dataset = [
+                    { label: 'Abulia', count: 10 },
+                    { label: 'Betelgeuse', count: 20 },
+                    { label: 'Cantaloupe', count: 30 },
+                    { label: 'Dijkstra', count: 40 }
+                  ];
+      var width = 360;
+      var height = 360;
+      var radius = Math.min(width, height) / 2;
+      var color = d3.scaleOrdinal(d3.schemeCategory20b);
+
+      var svg = d3.select('#chart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
+
+        var arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+        var pie = d3.pie()
+        .value(function(d){ return d.count; })
+        .sort(null);
+
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) {
+            return color(d.data.label);
+          });
+          
+          window.d3;
+    });
+ </script>
+</body>
+</html>
