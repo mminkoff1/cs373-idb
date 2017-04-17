@@ -30,6 +30,7 @@
           <li><a href="/characters">Character</a></li>
           <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
+          <li><a href="/visualization">Visualization</a></li>
           <li><a href="/about">About us</a></li>
         </ul>
       <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
@@ -40,13 +41,23 @@
   </nav>
 
   <div class= "container-fluid">
-    <div class="row">
-      <div id = "chart">
-      <p> Pie chart goes here </p>
+    <div class = "row">
+    <div class = "col-md-4">
     </div>
+      <div class ="col-md-4">
+      <h1> GOT Houses by Location</h1>
     </div>
+    <div class = "col-md-4"></div>
   </div>
 
+  <div class = "row">
+    <div class = "col-md-4">
+    </div>
+      <div id = "chart" class ="col-md-4">
+    </div>
+    <div class = "col-md-4"></div>
+    </div>
+  </div>
 
  <script src="http://code.jquery.com/jquery.js"></script>
  <script src="../static/js/bootstrap.min.js"></script>
@@ -91,7 +102,7 @@
           .attr('fill', function(d, i) {
             return color(d.data.label);
           });
-          
+
           window.d3;
     });
  </script>
