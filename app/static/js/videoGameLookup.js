@@ -1,11 +1,12 @@
 $(document).ready(function(){
   $(function () {
       $('a[href="#search"]').on('click', function(event) {
-        event.preventDefault();
-        $('#search').addClass('open');
-        $('#search > form > input[type="search"]').focus();
-        $('#but').fadeOut();
-        $('#start-text').fadeOut();
+        // event.preventDefault();
+        // $('#search').addClass('open');
+        // $('#search > form > input[type="search"]').focus();
+        // $('#but').fadeOut();
+        // $('#start-text').fadeOut();
+        window.location.href = "/games";
       });
       
       $('#search, #search button.close').on('click keyup', function(event) {
