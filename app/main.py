@@ -45,7 +45,7 @@ def characters():
 def get_game(game_id):
 	game = Game.query.filter(Game.ident == game_id).first()
 	character = Character.query.filter(Character.ident == game.characterid).first()
-	publisher = Publisher.query.filter(Publisher.name == game.publisher).first()
+	publisher = Publisher.query.filter(Publisher.ident == game.publisherid).first()
 	print game.publisher
 	return render_template("game.html", game = game, character = character, publisher = publisher)
 
