@@ -7,10 +7,12 @@ app.controller('thronesController', [ '$scope','$http', function ($scope,$http) 
     	method: 'JSONP',
     	url: url
 		}).
-	success(function(status) {
-    	$scope.data = status;
+	success(function(response) {
+    	//$scope.data = response.houses[0];
+    	console.log(response);
 	}).
-	error(function(status) {
+	error(function(response) {
+		console.log(response);
     	$scope.data = "Oh my we have an error";
 	});
 
