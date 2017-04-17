@@ -2,7 +2,7 @@
   <html>
   <head>
     <title>Video Game Lookup</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="../static/js/bootstrap.min.js"></script>
@@ -11,8 +11,12 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/angular.min.js"></script>
+
   </head>
   <body style="background-color: black;">
+   <script src="../static/js/app.js"></script>
+   <script src="../static/js/controllers/Controllers.js"></script>
 
   <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
     <div class="container-fluid">
@@ -180,6 +184,32 @@
      <p>The data was obtained through GiantBomb, IGDB, and Valve's API. With GET requests we got data formatted into JSON which we recorded and placed in an Angular factory.</p>
    </div>
 
+   <div class="row text-center">
+      <h1 class="text-center">Unit Tests</h1>
+      <!--ng-click="runUnittests()" -->
+      <div ng-app="VideoGameLookup" ng-controller="AboutController">
+        <button type="button" class="btn btn-info btn-lg antisocial" data-toggle="modal" data-target="#myModal">Run</button>
+        <div id="myModal" class="modal fade" role="dialog" style="color:black;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><font color="black">Tests</font></h4>
+              </div>
+              <div class="modal-body">
+                <p>{{ tests }}</p>
+              </div>
+              <div class="modal-footer">
+                <div class="row text-center">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
  </center>
  </div>
   <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
@@ -189,7 +219,6 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
-
 
    <script src="http://code.jquery.com/jquery.js"></script>
    <script src="../static/js/bootstrap.min.js"></script>

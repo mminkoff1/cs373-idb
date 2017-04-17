@@ -1,35 +1,20 @@
-app.controller('GameController', ['$scope', 'GameFactory',
- function($scope, GameFactory) {
 
-	$scope.sortType = 'name';
-	$scope.sortReverse = false;
 
-	// GameFactory.fetch().success(function(data) {
-	// 	$scope.games = data["games_list"];
-	// }); 
+/*app.controller('AboutController', ['$scope', 'AboutFactory',
+ function($scope, AboutFactory) {
+        $scope.tests        = 'waiting';
+        $scope.hello = "hello world";
 
-}]);
-
-app.controller('PublisherController', ['$scope', 'PublisherFactory',
- function($scope, PublisherFactory) {
-
-	$scope.sortType = 'name';
-	$scope.sortReverse = false;
-
-	// GameFactory.fetch().success(function(data) {
-	// 	$scope.games = data["games_list"];
-	// }); 
-
-}]);
-
-app.controller('CharacterController', ['$scope', 'CharacterFactory',
- function($scope, CharacterFactory) {
-
-	$scope.sortType = 'name';
-	$scope.sortReverse = false;
-
-	// GameFactory.fetch().success(function(data) {
-	// 	$scope.games = data["games_list"];
-	// }); 
-
-}]);
+        //$scope.runUnittests = function () {
+        //    $http.get('/test').success(function(data) {
+        //        $scope.tests = 'waiting'
+        //};
+        //)};
+}]);*/
+app.controller('AboutController', function($scope) {
+        $scope.tests = 'waiting';
+        $scope.hello = "hello world";
+        $scope.print = function() {
+        	return $scope.hello;
+        };
+});
