@@ -30,6 +30,7 @@ class Game(db.Model):
 	picture = db.Column(db.String())
 	description = db.Column(db.String())
 	characterid = db.Column(db.String())
+
 	#what print will return	
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
@@ -74,6 +75,11 @@ class Publisher(db.Model):
 	website = db.Column(db.String())
 	picture = db.Column(db.String())
 
+	#what print will return	
+	def __repr__(self):
+		return  "<Publisher(name='%s', num_games='%s', country='%s', website='%s', picture='%s')>" % (
+				self.name, self.num_games, self.country, self.website, self.picture)
+
 	@property
 	def serialize(self): 
 		return {
@@ -107,6 +113,11 @@ class Character(db.Model):
 	publid = db.Column(Integer)
 	picture = db.Column(db.String())
 
+	#what print will return	
+	def __repr__(self):
+		return  "<Character(name='%s', gender='%s', franchise='%s', location='%s', location='%s')>" % (
+				self.name, self.gender, self.franchise, self.location, self.location)
+
 	@property
 	def serialize(self): 
 		return {
@@ -119,10 +130,3 @@ class Character(db.Model):
 			'picture' : self.picture,
 			'publid' : self.publid
 		}
-
-"""
-if __name__ == '__main__':
-	engine =  create_engine("")
-	Base.metadata.create_all(engine)
-"""
-
