@@ -28,8 +28,8 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
-          <li><a href="/genre">Genre</a></li>
-          <li><a href="/publisher">Publisher</a></li>
+          <li><a href="/characters">Character</a></li>
+          <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
         </ul>
@@ -98,6 +98,28 @@
  </div>
 
  <center>
+    <div class = "row">
+
+<div class="col-sm-3">
+   <div class="row">
+     <h1>Statistics</h1>
+   </div>
+
+   <div class="row">
+     <a href="https://github.com/mminkoff1/cs373-idb"> Total Commit Count: 108</a>
+   </div>
+
+   <div class="row">
+     <a href="https://github.com/mminkoff1/cs373-idb/issues"> Total Issue Count: 17</a>
+   </div>
+
+   <div class="row">
+     <a href="https://github.com/mminkoff1/cs373-idb/blob/query-pages/app/test.py"> Total Unit Tests: 9</a>
+   </div>
+ </div>
+
+     <div class="col-sm-3">
+
    <div class="row">
      <h1>Project Links</h1>
    </div>
@@ -117,23 +139,9 @@
    <div class="row">
      <a href="https://github.com/mminkoff1/cs373-idb/wiki">Github Wiki</a>
    </div>
+ </div>
 
-   <div class="row">
-     <h1>Statistics</h1>
-   </div>
-
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb"> Total Commit Count: 108</a>
-   </div>
-
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/issues"> Total Issue Count: 17</a>
-   </div>
-
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/blob/query-pages/app/test.py"> Total Unit Tests: 9</a>
-   </div>
-
+<div class="col-sm-3">
    <div class="row">
      <h1>Tools</h1>
    </div>
@@ -157,7 +165,9 @@
    <div class="row">
      <a href="https://yuml.me/"> yUML</a>
    </div>
+ </div>
 
+  <div class="col-sm-3">
    <div class="row">
      <h1>Data</h1>
    </div>
@@ -173,13 +183,18 @@
    <div class="row">
      <a href="https://www.valvesoftware.com"> Valve</a>
    </div>
+ </div>
+</div>
 
    <div class="row">
      <h1>Scraping the Data</h1>
    </div>
 
    <div class="row">
-     <p>The data was obtained through GiantBomb, IGDB, and Valve's API. With GET requests we got data formatted into JSON which we recorded and placed in an Angular factory.</p>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+     <p>The data was obtained through GiantBomb's API. With GET requests, we scraped data queries formatted into JSON which we recorded and placed in our own PostGreSQL database.</p>
+   </div>
    </div>
 
    <div class="row text-center">
@@ -209,6 +224,7 @@
   </div>
  </center>
  </div>
+ <br></br>
 
   <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
     <button type="button" class="close" style="z-index: 9999;">x</button>
