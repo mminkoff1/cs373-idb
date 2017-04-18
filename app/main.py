@@ -12,16 +12,6 @@ from models import Game, Publisher, Character, app
 import os
 import subprocess
 
-app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
-app.config.from_object(__name__) # load config from this file , flaskr.py
-
-#connect to database
-engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone" + "@" + "35.184.159.10" + "/" + "gamelookup")
-
-Session = sessionmaker(bind = engine)
-session = Session()
-
 @app.route('/')
 def splash():
 	return render_template("splash.html")
