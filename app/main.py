@@ -1,6 +1,6 @@
-
 import sys, traceback
 sys.path.insert(0, './app/')
+import tests
 
 from flask import Flask, render_template, jsonify, request
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, create_engine, func
@@ -8,21 +8,11 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-<<<<<<< HEAD
 from models import Game, Publisher, Character, app
 import os
 import subprocess
 
-
-'''
-=======
-from models import Game, Publisher, Character
-
-import os
-import subprocess
-       
 app = Flask(__name__)
->>>>>>> 4e8fe394982d7af228fe96a680c697d59e699a13
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:test@localhost/swe'
 app.config.from_object(__name__) # load config from this file , flaskr.py
 
@@ -31,7 +21,6 @@ engine = create_engine("postgresql://" + "postgres" + ":" + "seanpickupyourphone
 
 Session = sessionmaker(bind = engine)
 session = Session()
-'''
 
 @app.route('/')
 def splash():
@@ -133,7 +122,7 @@ def get_character_id(character_id):
 	return jsonify(character)
 
 #Taken from Sethalopod github
-@app.route('/test')
+@app.route('/test/')
 def test():
     script_dir = os.path.dirname(__file__)
     rel_path = "tests.py"
@@ -143,7 +132,10 @@ def test():
     except subprocess.CalledProcessError as e:
     	process = e.output
 
-	return process.decode("utf-8") 
+    result = process.decode("utf-8")
+    result = result.replace('-', '')
+
+    return result      
 
 
 if __name__ == "__main__":
