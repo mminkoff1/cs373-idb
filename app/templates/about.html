@@ -200,7 +200,7 @@
    <div class="row text-center">
       <h1 class="text-center">Unit Tests</h1>
       <div ng-app="VideoGameLookup" ng-controller="AboutController">
-        <button ng-click="runUnittests()" type="button" class="btn btn-info btn-lg antisocial" data-toggle="modal" data-target="#myModal">Run</button>
+        <button type="button" class="btn btn-info btn-lg antisocial" data-toggle="modal" data-target="#myModal">{{tests}}</button>
         <div id="myModal" class="modal fade" role="dialog" style="color:black;">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -238,11 +238,13 @@
    <script src="../static/js/bootstrap.min.js"></script>
    <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
    <script src="../static/js/videoGameLookup.js"></script>
-   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
      <!-- Modules -->
-    <script src="../static/js/app.js"></script>
-    <script src="../static/js/controllers/Controllers1.js"></script>
+    <script type="text/javascript" src="../static/js/app.js"></script>
+    <script type="text/javascript" src="../static/js/controllers/Controllers.js"></script>
 
   </body>
   </html>
