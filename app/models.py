@@ -73,6 +73,8 @@ class Publisher(db.Model):
 	#notable_games
 	website = db.Column(db.String())
 	picture = db.Column(db.String())
+	gameid = db.Column(db.Integer)
+	characterid = db.Column(db.Integer)
 
 	@property
 	def serialize(self): 

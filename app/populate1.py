@@ -10,7 +10,6 @@ from sqlalchemy.orm import relationship
 
 from flask import Flask, render_template, make_response, url_for, send_file, jsonify, request
 from sqlalchemy.orm import sessionmaker
-import pybomb
 from sqlalchemy.sql import table, column, select, update, insert
 
 '''
@@ -68,8 +67,8 @@ publishermap = {}
 publishers = []
 '''
 **** GAMES CODE ****
-
-for i in range(0, 1):
+'''
+for i in range(1, 10):
 
 	url_craft = 'https://www.giantbomb.com/api/games/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json&offset=' + str(i * 100);
 	r = requests.get(url_craft, headers=headers)
@@ -80,9 +79,9 @@ for i in range(0, 1):
 	for x in json_data['results']:
 		print x['id']
 		print x['name']
-		#print x['publishers']
-		#print x['original_game_rating']
-		#print x['themes']
+		print x['publishers']
+		print x['original_game_rating']
+		print x['themes']
 
                 if x['original_release_date'] != None:
                     original_release_date = int(x['original_release_date'][:4])
@@ -128,13 +127,13 @@ for i in range(0, 1):
                 session.query(Game).filter_by(ident=idee).update({Game.avg_score: rate})
                 session.query(Game).filter_by(ident=idee).update({Game.theme: theme})
 
-                session.commit()
+								#session.commit()
 
 
 #session.query(Game).filter_by(ident=6).update({Game.publisher: u"EA GAMES"})
 
-session.commit()
-
+#session.commit()
+'''
 **** END GAMES ****
 '''
 
@@ -179,7 +178,7 @@ session.commit()
 
 **** END PUBLISHERS ****
 '''
-
+'''
 charactersmap = []
 ser2 = open('characterout.txt', 'r').read()
 charactersmap = eval(ser2)
@@ -223,6 +222,7 @@ for charid in charactersmap:
     session.add(publish)
 
 session.commit()
+'''
 '''
 ids = [r.ident for r in session.query(Game.ident).distinct()]
 
