@@ -6,7 +6,7 @@ from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKe
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from flask import Flask
-'''
+
 class TestModels (TestCase):
 
     def setUp(self):
@@ -40,7 +40,7 @@ class TestModels (TestCase):
         result = session.query(Game).get(99999)
         self.assertEqual(result.year, 2017)
         session.delete(result)
-	session.commit()
+        session.commit()
 
     def test_game_3(self):
         game = Game(ident = 99999, name = "Game", year = 2017, 
@@ -128,4 +128,3 @@ class TestModels (TestCase):
         
 if __name__ == "__main__":  
     main()
-'''
