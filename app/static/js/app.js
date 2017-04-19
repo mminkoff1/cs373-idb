@@ -1,2 +1,2 @@
 
-var app = angular.module('VideoGameLookup', []);
+var app = angular.module('VideoGameLookup', ['ngRoute']);
