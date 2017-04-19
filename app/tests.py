@@ -13,7 +13,7 @@ class TestModels (TestCase):
         app = Flask(__name__)
         app.config[
             'SQLALCHEMY_DATABASE_URI'] =                                    \
-            'postgres://postgres:seanpickupyourphone@35.184.159.10/gamelookup'
+            'postgresql://postgres:seanpickupyourphone@35.184.159.10/gamelookup'
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         self.db = SQLAlchemy(app)
 
@@ -126,5 +126,5 @@ class TestModels (TestCase):
         session.delete(result)
         session.commit()
         
-if __name__ == "__main__":  
+if __name__ == "__main__":
     main()
