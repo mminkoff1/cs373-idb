@@ -53,13 +53,16 @@ class Game(db.Model):
 class Publisher(db.Model):
 	__tablename__ = 'publishers'
 
-	def __init__(self, ident, name, num_games, year_founded, country, website):
+	def __init__(self, ident, name, num_games, year_founded, country, website, gameid, characterid, picture):
 	    self.ident = ident
 	    self.name = name
 	    self.num_games = int(num_games)
 	    self.year_founded = year_founded
 	    self.country = country
 	    self.website = website
+            self.gameid = gameid
+            self.characterid = characterid
+            self.picture = picture
 
 
 	ident = db.Column(db.Integer, primary_key=True)
