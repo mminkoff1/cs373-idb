@@ -1,19 +1,37 @@
 app.controller('thronesController', [ '$scope','$http', function ($scope,$http) {
 
-	$scope.data = {};
-	$scope.hello = "Hello World";
-	var url = 'http://www.youknownothing.fyi/api/houses';
-	$http({
-    	method: 'JSONP',
-    	url: url
-		}).
-	success(function(response) {
-    	//$scope.data = response.houses[0];
-    	console.log(response);
-	}).
-	error(function(response) {
-		console.log(response);
-    	$scope.data = "Oh my we have an error";
-	});
+	// $scope.houses = [];
+	// $scope.data = "Populating please wait...";
+	// // var url = 'http://www.youknownothing.fyi/api/houses';
+	// // $http.jsonp(url)
+	// // 	.success(function (response) {
+	// // 		$scope.houses = data;
+	// // 		console.log($scope.houses)
+	// // 	})
+	// // 	.error(function (response) {
+	// // 		console.log("error");
+	// // 	});;
+
+	// $http.get("http://www.youknownothing.fyi/api/houses")
+ //    .then(function(response) {
+ //        $scope.houses = angular.fromJson(response.data.houses);
+ //        var map = {};
+ //        for(var i = 0; i < $scope.houses.length; i++)
+ //        {
+ //        	if(map[$scope.houses[i].region] == null)
+ //        	{
+ //        		map[$scope.houses[i].region] = 1;
+ //        	}
+ //        	else
+ //        	{
+ //        		map[$scope.houses[i].region]++; 
+ //        	}
+ //        	//console.log($scope.houses[i]);
+ //        }
+ //        console.log(map);
+ //        $scope.data = map;
+ //    });
+
+
 
 }])

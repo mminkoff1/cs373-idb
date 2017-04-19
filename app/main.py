@@ -51,6 +51,10 @@ def characters():
 	return render_template("characters.html",
 		characters = Character.query.all())
 
+@app.route('/visualization/')
+def visualization():
+	# data = requests.get('http://www.youknownothing.fyi/api/houses')
+	return render_template("visualization.html")
 
 
 @app.route('/games/<int:game_id>')

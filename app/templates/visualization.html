@@ -47,7 +47,7 @@
     <div class = "col-md-4">
     </div>
       <div class ="col-md-4">
-      <h1> {{ data }}</h1>
+      <h1> Pie Chart of House Distribution by Region in Game of Thrones </h1>
     </div>
     <div class = "col-md-4"></div>
   </div>
@@ -74,14 +74,34 @@
   <!-- Controllers -->
   <script src="../static/js/controllers/thronesController.js"></script>
 
- <script>
-    $(document).ready(function(){
-      var dataset = [
-                    { label: 'Abulia', count: 10 },
-                    { label: 'Betelgeuse', count: 20 },
-                    { label: 'Cantaloupe', count: 30 },
-                    { label: 'Dijkstra', count: 40 }
-                  ];
+  <script>
+$(document).ready(function(){
+
+    $.ajax({
+      dataType: "json",
+      url: "http://www.youknownothing.fyi/api/houses",
+      success: function(data){
+        var map = {};
+        var houses = data.houses;
+        var count = 0;
+        for (var i = 0; i < houses.length; i++){
+          if(map[houses[i].region] == null)
+          {
+            map[houses[i].region] = 1;
+          }
+          else
+          {
+            map[houses[i].region]++;
+          }
+        }
+        console.log(map);
+        createChart(map);
+      }
+    });
+
+
+      function createChart(dataset){
+
       var width = 360;
       var height = 360;
       var radius = Math.min(width, height) / 2;
@@ -112,7 +132,12 @@
           });
 
           window.d3;
+       }   
+
+        
     });
- </script>
+
+  </script>
+
 </body>
 </html>
