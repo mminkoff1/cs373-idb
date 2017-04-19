@@ -6,7 +6,7 @@ from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKe
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from flask import Flask
-
+'''
 class TestModels (TestCase):
 
     def setUp(self):
@@ -128,3 +128,4 @@ class TestModels (TestCase):
         
 if __name__ == "__main__":  
     main()
+'''
