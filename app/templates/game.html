@@ -80,8 +80,7 @@
 				desc = desc.replace(/\<(.*?)\>/g,"");
 				desc = desc.replace(/  +/g, ' ');
 				console.log(desc);
-        $('#description').text('');
-        $('#desciption').text(desc);
+        $('#description').empty().append(desc);
     });
     </script>
 </body>
