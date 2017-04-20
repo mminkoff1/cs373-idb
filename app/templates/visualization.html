@@ -100,8 +100,24 @@ $(document).ready(function(){
     });
 
 
-      function createChart(dataset){
+      function createChart(data){
 
+      var dataset = [{"label": "north", "count":20},
+                    {"label":"south", "count":50}];
+
+      var arr = [];
+      Object.keys(data).forEach(function(key,index) {
+        console.log("Key = " + key + "Value " + data[key]);
+        var val = data[key];
+        arr.push({
+          label: key,
+          count: val
+        });
+
+      })
+
+      dataset = arr;
+   
       var width = 360;
       var height = 360;
       var radius = Math.min(width, height) / 2;
