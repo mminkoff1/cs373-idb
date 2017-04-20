@@ -79,8 +79,9 @@
         desc = desc.replace(/\<(.*?)\>/g,"");
         desc = desc.replace(/  +/g, ' ');
         console.log(desc);
-        $('#description').text('');
-        $('#description').text(desc);
+        $('#description').empty().append(desc);
+        //alert(desc);
+        //$('#description').text(desc);
 
         //$("description2").text(desc);        
 

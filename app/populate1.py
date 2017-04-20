@@ -37,7 +37,7 @@ Base = declarative_base()
 class Game(Base):
 	__tablename__ = 'games'
 
-	def __init__(self, ident, name, year, publisher, avg_score, theme, picture, description):
+	def __init__(self, ident, name, year, publisher, avg_score, theme, picture, description, characterid):
                 self.ident = ident
 		self.name = name
 		self.year = int(year)
@@ -46,6 +46,7 @@ class Game(Base):
                 self.theme = theme
                 self.picture = picture
                 self.description = description
+                self.characterid = characterid
 
 	ident = Column(Integer, primary_key=True)
 	name = Column(String)
@@ -55,6 +56,7 @@ class Game(Base):
         theme = Column(String)
         picture = Column(String)
         description = Column(String)
+        characterid = Column(Integer)
 
 	def __repr__(self):
 		return  self.name 
@@ -157,7 +159,7 @@ session.commit()
 **** END GAMES ****
 '''
 
-
+'''
 #***** PUBLISHERS CODE *****
 
 publishers = [r.publisher for r in session.query(Game.publisher).distinct()]
@@ -214,7 +216,7 @@ for publ in publishers:
 session.commit()
 
 #**** END PUBLISHERS ****
-
+'''
 '''
 charactersmap = []
 ser2 = open('characterout1.txt', 'r').read()
@@ -302,6 +304,36 @@ for thisid in ids:
 
 print charactersmap
 '''
+
+ids = [r.ident for r in session.query(Game.ident).distinct()]
+
+number = raw_input()
+for thisid in ids[int(number):int(number)+50]:
+    url_craft5 = 'https://www.giantbomb.com/api/game/' + str(thisid) + '/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json'
+
+    r5 = requests.get(url_craft5, headers=headers)
+
+    json_data5 = r5.json()
+
+    newid = 0
+    thisname = "N/A"
+    if json_data5['results']['characters'] != None:
+        newid = json_data5['results']['characters'][0]['id']
+        url_craft6 = 'https://www.giantbomb.com/api/character/' + str(thisid) + '/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json'
+        r6 = requests.get(url_craft6, headers=headers)
+
+        json_data6 = r6.json()
+
+        thisname = json_data5['results']['name']
+
+        session.query(Character).filter_by(ident=newid).update({Character.first_game: thisname})
+
+    print "appears in " + thisname
+    print newid
+    print "-------"
+
+session.commit()
+
 '''
 for i in range(0, 132):
     url_craft3 = 'https://www.giantbomb.com/api/companies/?api_key=3749c81f1b1f295e4fd3bc35baad999a391ac684&format=json&offset=' + str(i * 100)
