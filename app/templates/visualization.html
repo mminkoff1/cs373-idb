@@ -2,7 +2,11 @@
 <html>
 <head>
   <title>Video Game Lookup</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
+  <meta charset="utf-8">
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
   <script src="../static/js/bootstrap.min.js"></script>
@@ -11,8 +15,29 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+  <script src="index.js"></script>
+  <style>
+    .bubbleChart {
+      min-width: 100px;
+      max-width: 700px;
+      height: 700px;
+      margin: 0 auto;
+    }
+    .bubbleChart svg{
+      background: #000000;
+    }
+  </style>
 
-   <script src="../static/js/angular.min.js"></script>
 
 
 </head>
@@ -32,8 +57,8 @@
           <li><a href="/characters">Character</a></li>
           <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
-          <li><a href="/visualization">Visualization</a></li>
           <li><a href="/about">About us</a></li>
+          <li><a href="/visualization">Visualization</li>
         </ul>
       <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
         <li><a href="#search">Search</a></li>
@@ -41,126 +66,7 @@
       </div>
     </div>
   </nav>
-
-  <div class= "container-fluid" ng-app="VideoGameLookup" ng-controller="thronesController">
-    <div class = "row">
-    <div class = "col-md-4">
-    </div>
-      <div class ="col-md-4">
-      <h1> Pie Chart of House Distribution by Region in Game of Thrones </h1>
-    </div>
-    <div class = "col-md-4"></div>
-  </div>
-
-  <div class = "row">
-    <div class = "col-md-4">
-    </div>
-      <div id = "chart" class ="col-md-4">
-    </div>
-    <div class = "col-md-4"></div>
-    </div>
-  </div>
-
- <script src="http://code.jquery.com/jquery.js"></script>
- <script src="../static/js/bootstrap.min.js"></script>
- <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
- <script src="../static/js/videoGameLookup.js"></script>
- <script src="../static/js/jquery.tablesorter.min.js"></script>
-  <script src="https://d3js.org/d3.v4.js"></script>
-
-    <!-- Modules -->
-  <script src="../static/js/app.js"></script>
-
-  <!-- Controllers -->
-  <script src="../static/js/controllers/thronesController.js"></script>
-
-  <script>
-$(document).ready(function(){
-
-    $.ajax({
-      dataType: "json",
-      url: "http://www.youknownothing.fyi/api/houses",
-      success: function(data){
-        var map = {};
-        var houses = data.houses;
-        var count = 0;
-        // console.log(houses[3].region);
-        // s = houses[3].region.toLowerCase();
-        // console.log(s);
-        for (var i = 0; i < houses.length; i++){
-          if(map[houses[i].region] == null)
-          {
-            var s = houses[i].region.toLowerCase();
-            console.log(s);
-            map[s] = 1;
-          }
-          else
-          {
-            map[s]++;
-          }
-        }
-        console.log(map);
-        createChart(map);
-      }
-    });
-
-
-      function createChart(data){
-
-      var dataset = [{"label": "north", "count":20},
-                    {"label":"south", "count":50}];
-
-      var arr = [];
-      Object.keys(data).forEach(function(key,index) {
-        //console.log("Key = " + key + " Value= " + data[key]);
-        var val = data[key];
-        arr.push({
-          label: key,
-          count: val
-        });
-
-      })
-
-      dataset = arr;
-   
-      var width = 360;
-      var height = 360;
-      var radius = Math.min(width, height) / 2;
-      var color = d3.scaleOrdinal(d3.schemeCategory20b);
-
-      var svg = d3.select('#chart')
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
-        .on("mouseover", function(d) {
-          console.log("mouseover");
-        }); 
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-
-        var pie = d3.pie()
-        .value(function(d){ return d.count; })
-        .sort(null);
-
-        var path = svg.selectAll('path')
-          .data(pie(dataset))
-          .enter()
-          .append('path')
-          .attr('d', arc)
-          .attr('fill', function(d, i) {
-            return color(d.data.label);
-          });
-
-          window.d3;
-       }   
-
-        
-    });
-
-  </script>
-
+<body style="background: #000000">
+<div class="bubbleChart"/>
 </body>
 </html>

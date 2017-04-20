@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)file:///v/filer4b/v38q001/jfajay/373/videogamelookup/cs373-idb/app/templates/visualization.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <title>Video Game Lookup</title>
+  <script src="./Video Game Lookup_files/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./Video Game Lookup_files/bootstrap.css" rel="stylesheet" media="screen">
+  <script src="./Video Game Lookup_files/bootstrap.min.js"></script>
+  <link rel="stylesheet" media="screen" href="./Video Game Lookup_files/custom.css">
+  <script type="text/javascript" src="./Video Game Lookup_files/videoGameLookup.js"></script>
+  <link href="./Video Game Lookup_files/css" rel="stylesheet">
+  <script type="text/javascript" src="./Video Game Lookup_files/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="./Video Game Lookup_files/bootstrap-collapse.js"></script>
+
+   <script src="./Video Game Lookup_files/angular.min.js"></script>
+
+
+</head>
+<body style="background-color: black;">
+  <nav class="navbar navbar-default navbar-inner" style="margin-bottom: 0px; z-index: 9999;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-ex"> <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="file:///">Game Lookup</a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse-ex">
+        <ul class="nav navbar-nav">
+          <li><a href="file:///characters">Character</a></li>
+          <li><a href="file:///publishers">Publisher</a></li>
+          <li><a href="file:///games">Games</a></li>
+          <li><a href="file:///visualization">Visualization</a></li>
+          <li><a href="file:///about">About us</a></li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
+        <li><a href="file:///v/filer4b/v38q001/jfajay/373/videogamelookup/cs373-idb/app/templates/visualization.html#search">Search</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid ng-scope" ng-app="VideoGameLookup" ng-controller="thronesController">
+    <div class="row">
+    <div class="col-md-4">
+    </div>
+      <div class="col-md-4">
+      <h1> Pie Chart of House Distribution by Region in Game of Thrones </h1>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+      <div id="chart" class="col-md-4">
+    <svg width="720" height="720"><g transform="translate(360,360)"><path d="M2.2043642384652358e-14,-360A360,360,0,0,1,185.14556848246428,-308.7411836333228L0,0Z" fill="#393b79"></path><path d="M185.14556848246428,-308.7411836333228A360,360,0,0,1,242.5304317127606,-266.0432101994373L0,0Z" fill="#5254a3"></path><path d="M242.5304317127606,-266.0432101994373A360,360,0,0,1,357.37519467529944,43.39320489191626L0,0Z" fill="#6b6ecf"></path><path d="M357.37519467529944,43.39320489191626A360,360,0,0,1,257.2579006565272,251.83004695587135L0,0Z" fill="#9c9ede"></path><path d="M257.2579006565272,251.83004695587135A360,360,0,0,1,100.97725128541796,345.5482523799557L0,0Z" fill="#637939"></path><path d="M100.97725128541796,345.5482523799557A360,360,0,0,1,-20.459077037161713,359.4181772904474L0,0Z" fill="#8ca252"></path><path d="M-20.459077037161713,359.4181772904474A360,360,0,0,1,-267.76030324060804,240.6333725992669L0,0Z" fill="#b5cf6b"></path><path d="M-267.76030324060804,240.6333725992669A360,360,0,0,1,-341.742253273512,113.1911318414246L0,0Z" fill="#cedb9c"></path><path d="M-341.742253273512,113.1911318414246A360,360,0,0,1,-354.33154488122744,-63.63298124465561L0,0Z" fill="#8c6d31"></path><path d="M-354.33154488122744,-63.63298124465561A360,360,0,0,1,-338.38647670892783,-122.86005201251643L0,0Z" fill="#bd9e39"></path><path d="M-338.38647670892783,-122.86005201251643A360,360,0,0,1,-328.8069449811973,-146.5810114992113L0,0Z" fill="#e7ba52"></path><path d="M-328.8069449811973,-146.5810114992113A360,360,0,0,1,-326.69009310307814,-151.24015031830052L0,0Z" fill="#e7cb94"></path><path d="M-326.69009310307814,-151.24015031830052A360,360,0,0,1,-281.0029356922147,-225.02744306496717L0,0Z" fill="#843c39"></path><path d="M-281.0029356922147,-225.02744306496717A360,360,0,0,1,-206.6039463266544,-294.8131770498953L0,0Z" fill="#ad494a"></path><path d="M-206.6039463266544,-294.8131770498953A360,360,0,0,1,-40.85202320967517,-357.674589815486L0,0Z" fill="#d6616b"></path><path d="M-40.85202320967517,-357.674589815486A360,360,0,0,1,-35.76359693641238,-358.21915796641844L0,0Z" fill="#e7969c"></path><path d="M-35.76359693641238,-358.21915796641844A360,360,0,0,1,-25.566093531062617,-359.0910397957055L0,0Z" fill="#7b4173"></path><path d="M-25.566093531062617,-359.0910397957055A360,360,0,0,1,-20.4590770371618,-359.4181772904474L0,0Z" fill="#a55194"></path><path d="M-20.4590770371618,-359.4181772904474A360,360,0,0,1,-15.347926320037228,-359.6726861434917L0,0Z" fill="#ce6dbd"></path><path d="M-15.347926320037228,-359.6726861434917A360,360,0,0,1,-6.613092715395707e-14,-360L0,0Z" fill="#de9ed6"></path></g></svg></div>
+    <div class="col-md-4"></div>
+    </div>
+  </div>
+
+ <script src="./Video Game Lookup_files/jquery.js"></script>
+ <script src="./Video Game Lookup_files/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="./Video Game Lookup_files/custom.css">
+ <script src="./Video Game Lookup_files/videoGameLookup.js"></script>
+ <script src="./Video Game Lookup_files/jquery.tablesorter.min.js"></script>
+  <script src="./Video Game Lookup_files/d3.v4.js"></script>
+
+    <!-- Modules -->
+  <script src="./Video Game Lookup_files/app.js"></script>
+
+  <!-- Controllers -->
+  <script src="./Video Game Lookup_files/thronesController.js"></script>
+
+  <script>
+$(document).ready(function(){
+
+    $.ajax({
+      dataType: "json",
+      url: "http://www.youknownothing.fyi/api/houses",
+      success: function(data){
+        var map = {};
+        var houses = data.houses;
+        var count = 0;
+        // console.log(houses[3].region);
+        // s = houses[3].region.toLowerCase();
+        // console.log(s);
+        for (var i = 0; i < houses.length; i++){
+          var s = houses[i].region.toLowerCase();
+          if(s.valueOf() == '-' || s.valueOf() == 'none' || s.valueOf() == 'unknown'){
+            //console.log("Skipping");
+            continue;
+          }
+          if(map[s] == null)
+          {
+            console.log(s);
+            map[s] = 1;
+          }
+          else
+          {
+            map[s]++;
+          }
+        }
+        console.log(map);
+        createChart(map);
+      }
+    });
+
+
+      function createChart(data){
+
+      var dataset = [{"label": "north", "count":20},
+                    {"label":"south", "count":50}];
+
+      var arr = [];
+      Object.keys(data).forEach(function(key,index) {
+        //console.log("Key = " + key + " Value= " + data[key]);
+        var val = data[key];
+        arr.push({
+          label: key,
+          count: val
+        });
+
+      })
+
+      dataset = arr;
+   
+      var width = 720;
+      var height = 720;
+      var radius = Math.min(width, height) / 2;
+      var color = d3.scaleOrdinal(d3.schemeCategory20b);
+
+      var key = function(d){ return d.data.label; };
+
+      var svg = d3.select('#chart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
+        .on("mouseover", function(d) {
+          //console.log(this.svg);
+        }); 
+        var arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+        var pie = d3.pie()
+        .value(function(d){ return d.count; })
+        .sort(null);
+
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) {
+            return color(d.data.label);
+          });
+
+
+          console.log(text);
+          window.d3;
+       }   
+
+        
+    });
+
+  </script>
+
+
+
+</body></html>
