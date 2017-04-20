@@ -8,10 +8,6 @@ $(document).ready(function () {
     success: function(data){
       var map = {};
       var houses = data.houses;
-      var count = 0;
-        // console.log(houses[3].region);
-        // s = houses[3].region.toLowerCase();
-        // console.log(s);
         for (var i = 0; i < houses.length; i++){
           var s = houses[i].region.toLowerCase();
           if(s.valueOf() == "-" || s.valueOf() == "none"){
@@ -19,7 +15,6 @@ $(document).ready(function () {
           }
           if(map[s] == null)
           {
-            //console.log(s);
             map[s] = 1;
           }
           else
@@ -38,14 +33,21 @@ $(document).ready(function () {
           count: val
         });
       })
-        console.log(arr)
-        createChart(arr);
+        var arrSmall = [];
+
+        for(var i = 0; i < 10; i++)
+        {
+          arrSmall[i] = arr[i];
+        }
+        console.log(arrSmall);
+        createChart(arrSmall);
       }
     });
 
 
-  function createChart(data){
+  function createChart(smallArray){
 
+    console.log(smallArray.length);
     var bubbleChart = new d3.svg.BubbleChart({
       supportResponsive: true,
     //container: => use @default
@@ -59,17 +61,7 @@ $(document).ready(function () {
     //intersectInc: use @default
     //circleColor: use @default
     data: {
-      items: [
-      {text: "Java", count: "236"},
-      {text: ".Net", count: "382"},
-      {text: "Php", count: "170"},
-      {text: "Ruby", count: "123"},
-      {text: "D", count: "12"},
-      {text: "Python", count: "170"},
-      {text: "C/C++", count: "382"},
-      {text: "Pascal", count: "10"},
-      {text: "Something", count: "170"},
-      ],
+      items: smallArray,
       eval: function (item) {return item.count;},
       classed: function (item) {return item.text.split(" ").join("");}
     },
@@ -77,7 +69,6 @@ $(document).ready(function () {
     {
       name: "central-click",
       options: {
-        text: "(See more detail)",
         style: {
           "font-size": "12px",
           "font-style": "italic",
@@ -88,7 +79,6 @@ $(document).ready(function () {
           },
           attr: {dy: "65px"},
           centralClick: function() {
-            alert("Here is more details!!");
           }
         }
       },
