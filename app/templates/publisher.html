@@ -31,6 +31,7 @@
           <li><a href="/publishers">Publisher</a></li>
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
+          <li><a href="/visualization">Visualization</li>
         </ul>
       <ul class="nav navbar-nav navbar-right" style="visibility:hidden;">
         <li><a href="#search">Search</a></li>
@@ -51,8 +52,10 @@
         <p> Country: {{ publisher.country }} </p>
         <p> Year Founded: {{ publisher.year_founded }} </p>
         <p> Website: {{ publisher.website }} </p>
-        <p> Notable Game:<a href="../games/{{ game.ident }}"> {{ game.name }} </a></p>
-        <p>Notable Character:<a href="../characters/{{ character.ident }}"> {{ character.name }} </a></p>
+        <h1>Games: </h1>
+        {%for game in publisher.games.all()%}
+        <p> <a href="../games/{{ game.ident }}"> {{ game.name }} </a> </p>
+        {%endfor%}
         </div>
       </div>
 

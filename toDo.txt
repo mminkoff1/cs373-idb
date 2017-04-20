@@ -1,0 +1,5 @@
+1. Alex - DB Relationships
+2. Jeff - Search , change frontend to display multiple entries (publisher shows all games, characters show all games in)
+3. Mitchell - Search
+4. Sean - critiques, user stories
+5. Alex You -- unit test button, create page that exercises the API of another group
