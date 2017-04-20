@@ -2,7 +2,7 @@
   <html>
   <head>
     <title>Video Game Lookup</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="../static/js/bootstrap.min.js"></script>
@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+
   </head>
   <body style="background-color: black;">
 
@@ -26,8 +28,10 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar-collapse-ex">
         <ul class="nav navbar-nav">
-          <li><a href="/genre">Genre</a></li>
-          <li><a href="/publisher">Publisher</a></li>
+
+          <li><a href="/characters">Character</a></li>
+          <li><a href="/publishers">Publisher</a></li>
+
           <li><a href="/games">Games</a></li>
           <li><a href="/about">About us</a></li>
         </ul>
@@ -96,92 +100,138 @@
  </div>
 
  <center>
-   <div class="row">
-     <h1>Project Links</h1>
-   </div>
+    <div class = "row">
 
-   <div class="row">
-     <a href="https://app.apiary.io/cs373api">Apiary API</a>
-   </div>
- 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/issues">Github Issue Tracker</a>
-   </div>
+      <div class="col-sm-3">
+         <div class="row">
+           <h1>Statistics</h1>
+         </div>
 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb">Github Repo</a>
-   </div>
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb"> Total Commit Count: 108</a>
+         </div>
 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/wiki">Github Wiki</a>
-   </div>
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb/issues"> Total Issue Count: 17</a>
+         </div>
 
-   <div class="row">
-     <h1>Statistics</h1>
-   </div>
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb/blob/query-pages/app/test.py"> Total Unit Tests: 9</a>
+         </div>
+       </div>
 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb"> Total Commit Count: 108</a>
-   </div>
+       <div class="col-sm-3">
 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/issues"> Total Issue Count: 17</a>
-   </div>
+         <div class="row">
+           <h1>Project Links</h1>
+         </div>
 
-   <div class="row">
-     <a href="https://github.com/mminkoff1/cs373-idb/blob/query-pages/app/test.py"> Total Unit Tests: 9</a>
-   </div>
+         <div class="row">
+           <a href="https://app.apiary.io/cs373api">Apiary API</a>
+         </div>
+       
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb/issues">Github Issue Tracker</a>
+         </div>
 
-   <div class="row">
-     <h1>Tools</h1>
-   </div>
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb">Github Repo</a>
+         </div>
 
-   <div class="row">
-     <a href="https://angularjs.org/"> AngularJS</a>
-   </div>
+         <div class="row">
+           <a href="https://github.com/mminkoff1/cs373-idb/wiki">Github Wiki</a>
+         </div>
+       </div>
 
-   <div class="row">
-     <a href="http://getbootstrap.com/"> BoostrapJS</a>
-   </div>
+      <div class="col-sm-3">
+         <div class="row">
+           <h1>Tools</h1>
+         </div>
 
-   <div class="row">
-     <a href="http://flask.pocoo.org/"> Flask</a>
-   </div>
+         <div class="row">
+           <a href="https://angularjs.org/"> AngularJS</a>
+         </div>
 
-   <div class="row">
-     <a href="http://www.sqlalchemy.org/"> SQLAlchemy</a>
-   </div>
+         <div class="row">
+           <a href="http://getbootstrap.com/"> BoostrapJS</a>
+         </div>
 
-   <div class="row">
-     <a href="https://yuml.me/"> yUML</a>
-   </div>
+         <div class="row">
+           <a href="http://flask.pocoo.org/"> Flask</a>
+         </div>
 
-   <div class="row">
-     <h1>Data</h1>
-   </div>
+         <div class="row">
+           <a href="http://www.sqlalchemy.org/"> SQLAlchemy</a>
+         </div>
 
-   <div class="row">
-     <a href="https://www.giantbomb.com"> GiantBomb</a>
-   </div>
+         <div class="row">
+           <a href="https://yuml.me/"> yUML</a>
+         </div>
+       </div>
 
-   <div class="row">
-     <a href="https://www.igdb.com"> IGDB</a>
-   </div>
+        <div class="col-sm-3">
+         <div class="row">
+           <h1>Data</h1>
+         </div>
 
-   <div class="row">
-     <a href="https://www.valvesoftware.com"> Valve</a>
-   </div>
+         <div class="row">
+           <a href="https://www.giantbomb.com"> GiantBomb</a>
+         </div>
 
-   <div class="row">
-     <h1>Scraping the Data</h1>
-   </div>
+         <div class="row">
+           <a href="https://www.igdb.com"> IGDB</a>
+         </div>
 
-   <div class="row">
-     <p>The data was obtained through GiantBomb, IGDB, and Valve's API. With GET requests we got data formatted into JSON which we recorded and placed in an Angular factory.</p>
-   </div>
+         <div class="row">
+           <a href="https://www.valvesoftware.com"> Valve</a>
+         </div>
+       </div>
+      </div>
 
- </center>
+       <div class="row">
+         <h1>Scraping the Data</h1>
+       </div>
+
+       <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+         <p>The data was obtained through GiantBomb's API. With GET requests, we scraped data queries formatted into JSON which we recorded and placed in our own PostGreSQL database.</p>
+       </div>
+       </div>
+
+       <div class="row text-center">
+          <h1 class="text-center">Unit Tests</h1>
+          <a href="http://gamelookup.me/test">
+              <button class="btn btn-info btn-lg antisocial">Run</button>
+          </a>
+            <!--<button type="button" class="btn btn-info btn-lg antisocial">Run</button>-->
+          <!--<div ng-app="VideoGameLookup" ng-controller="AboutController">
+            <button type="button" class="btn btn-info btn-lg antisocial" data-toggle="modal" data-target="#myModal">{{tests}}</button>
+            <div id="myModal" class="modal fade" role="dialog" style="color:black;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><font color="black">Tests</font></h4>
+                  </div>
+                  <div class="modal-body">
+                    <p><font color="black">{{tests}}</font></p>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="row text-center">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>-->
+        </div>
+    </div>
+  </center>
  </div>
+ <br></br>
+
   <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
     <button type="button" class="close" style="z-index: 9999;">x</button>
     <form>
@@ -190,11 +240,17 @@
     </form>
   </div>
 
-
    <script src="http://code.jquery.com/jquery.js"></script>
    <script src="../static/js/bootstrap.min.js"></script>
    <link rel="stylesheet" type="text/css" href="../static/css/custom.css"/>
    <script src="../static/js/videoGameLookup.js"></script>
+   <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+     <!-- Modules -->
+    <script type="text/javascript" src="../static/js/app.js"></script>
+    <script type="text/javascript" src="../static/js/controllers/Controllers.js"></script>
 
   </body>
   </html>

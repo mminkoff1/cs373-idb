@@ -51,6 +51,10 @@
         <p> Country: {{ publisher.country }} </p>
         <p> Year Founded: {{ publisher.year_founded }} </p>
         <p> Website: {{ publisher.website }} </p>
+        <h1>Games: </h1>
+        {%for game in publisher.games.all()%}
+        <p> <a href="../games/{{ game.ident }}"> {{ game.name }} </a> </p>
+        {%endfor%}
         </div>
       </div>
 

@@ -28,3 +28,11 @@ app.factory('CharacterFactory', function($http) {
      } 
   };
 });
+
+app.factory('AboutFactory', function($http) { 
+  return {
+    fetch: function () {
+      return $http.get('/test');
+    } 
+  };
+});
