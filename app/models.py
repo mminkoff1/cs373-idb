@@ -22,15 +22,14 @@ class Game(db.Model):
 	name = db.Column(db.String())
 	year = db.Column(db.Integer)
 	publisher = db.Column(db.String())
-	#num_players = db.Column(Integer)
-	#notable_char
 	avg_score = db.Column(db.String())
-	#systems = db.Column(db.String())
 	theme = db.Column(db.String())
 	picture = db.Column(db.String())
 	description = db.Column(db.String())
 	characterid = db.Column(db.String())
-	#what print will return	
+	publisher_id = db.Column(db.Integer, db.ForeignKey('publishers.ident'))
+
+
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
 				self.name, self.year, self.publisher, self.avg_score, self.theme)
@@ -53,31 +52,18 @@ class Game(db.Model):
 class Publisher(db.Model):
 	__tablename__ = 'publishers'
 
-	def __init__(self, ident, name, num_games, year_founded, country, website, gameid, characterid, picture):
-	    self.ident = ident
-	    self.name = name
-	    self.num_games = int(num_games)
-	    self.year_founded = year_founded
-	    self.country = country
-	    self.website = website
-            self.gameid = gameid
-            self.characterid = characterid
-            self.picture = picture
-
 
 	ident = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String())
-	#abbreviation = db.Model(db.String())
-
 	num_games = db.Column(db.Integer)
 	year_founded = db.Column(db.Integer)
 	country = db.Column(db.String())
-	#num_franchises = db.Column(Integer)
-	#notable_games
 	website = db.Column(db.String())
 	picture = db.Column(db.String())
 	gameid = db.Column(db.Integer)
 	characterid = db.Column(db.Integer)
+
+	games = db.relationship('Game', backref='publishers', lazy='dynamic')
 
 	@property
 	def serialize(self): 
