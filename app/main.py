@@ -58,10 +58,12 @@ def get_publisher(publisher_id):
 
 @app.route('/characters/<int:character_id>')
 def get_character(character_id):
+
 	character = Character.query.filter(Character.ident == character_id).first()
 	publisher = Publisher.query.filter(Publisher.ident == character.publid).first()
 	game = Game.query.filter(Game.name == character.first_game).first()
 	return render_template("character.html", game = game, character = character, publisher = publisher)
+
 
 
 
