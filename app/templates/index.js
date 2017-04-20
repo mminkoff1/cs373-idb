@@ -3,20 +3,23 @@ $(document).ready(function () {
 
 
   $.ajax({
-      dataType: "json",
-      url: "http://www.youknownothing.fyi/api/houses",
-      success: function(data){
-        var map = {};
-        var houses = data.houses;
-        var count = 0;
+    dataType: "json",
+    url: "http://www.youknownothing.fyi/api/houses",
+    success: function(data){
+      var map = {};
+      var houses = data.houses;
+      var count = 0;
         // console.log(houses[3].region);
         // s = houses[3].region.toLowerCase();
         // console.log(s);
         for (var i = 0; i < houses.length; i++){
-          if(map[houses[i].region] == null)
+          var s = houses[i].region.toLowerCase();
+          if(s.valueOf() == "-" || s.valueOf() == "none"){
+            continue;
+          }
+          if(map[s] == null)
           {
-            var s = houses[i].region.toLowerCase();
-            console.log(s);
+            //console.log(s);
             map[s] = 1;
           }
           else
@@ -24,26 +27,27 @@ $(document).ready(function () {
             map[s]++;
           }
         }
+
         console.log(map);
-        createChart(map);
+        var arr = [];
+        Object.keys(map).forEach(function(key,index) {
+        //console.log("Key = " + key + " Value= " + data[key]);
+        var val = map[key];
+        arr.push({
+          text: key,
+          count: val
+        });
+      })
+        console.log(arr)
+        createChart(arr);
       }
     });
 
 
   function createChart(data){
-      var arr = [];
-      Object.keys(data).forEach(function(key,index) {
-        //console.log("Key = " + key + " Value= " + data[key]);
-        var val = data[key];
-        arr.push({
-          label: key,
-          count: val
-        });
-      })
-  console.log(arr);
 
-  var bubbleChart = new d3.svg.BubbleChart({
-    supportResponsive: true,
+    var bubbleChart = new d3.svg.BubbleChart({
+      supportResponsive: true,
     //container: => use @default
     size: 600,
     //viewBoxSize: => use @default
@@ -56,28 +60,28 @@ $(document).ready(function () {
     //circleColor: use @default
     data: {
       items: [
-        {text: "Java", count: "236"},
-        {text: ".Net", count: "382"},
-        {text: "Php", count: "170"},
-        {text: "Ruby", count: "123"},
-        {text: "D", count: "12"},
-        {text: "Python", count: "170"},
-        {text: "C/C++", count: "382"},
-        {text: "Pascal", count: "10"},
-        {text: "Something", count: "170"},
+      {text: "Java", count: "236"},
+      {text: ".Net", count: "382"},
+      {text: "Php", count: "170"},
+      {text: "Ruby", count: "123"},
+      {text: "D", count: "12"},
+      {text: "Python", count: "170"},
+      {text: "C/C++", count: "382"},
+      {text: "Pascal", count: "10"},
+      {text: "Something", count: "170"},
       ],
       eval: function (item) {return item.count;},
       classed: function (item) {return item.text.split(" ").join("");}
     },
     plugins: [
-      {
-        name: "central-click",
-        options: {
-          text: "(See more detail)",
-          style: {
-            "font-size": "12px",
-            "font-style": "italic",
-            "font-family": "Source Sans Pro, sans-serif",
+    {
+      name: "central-click",
+      options: {
+        text: "(See more detail)",
+        style: {
+          "font-size": "12px",
+          "font-style": "italic",
+          "font-family": "Source Sans Pro, sans-serif",
             //"font-weight": "700",
             "text-anchor": "middle",
             "fill": "white"
@@ -122,8 +126,8 @@ $(document).ready(function () {
                 y: function (d) {return d.cy;}
               }
             }
-          ],
-          centralFormat: [
+            ],
+            centralFormat: [
             {// Line #0
               style: {"font-size": "50px"},
               attr: {}
@@ -132,9 +136,9 @@ $(document).ready(function () {
               style: {"font-size": "30px"},
               attr: {dy: "40px"}
             }
-          ]
-        }
-      }]
-  });
+            ]
+          }
+        }]
+      });
 }
 });
