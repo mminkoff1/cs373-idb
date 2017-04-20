@@ -8,10 +8,17 @@ $(document).ready(function () {
     success: function(data){
       var map = {};
       var houses = data.houses;
+      var patt =/^the /i;
         for (var i = 0; i < houses.length; i++){
           var s = houses[i].region.toLowerCase();
-          if(s.valueOf() == "-" || s.valueOf() == "none"){
+          console.log(s);
+          console.log(patt.test(s));
+          s = s.replace(patt,"");
+          if(s.valueOf() == "-" || s.valueOf() == "none" || s.valueOf() == "unknown"){
             continue;
+          }
+          if(s.valueOf() =="vale of arryn"){
+            s = "vale";
           }
           if(map[s] == null)
           {
@@ -22,6 +29,7 @@ $(document).ready(function () {
             map[s]++;
           }
         }
+
 
         console.log(map);
         var arr = [];
@@ -35,11 +43,23 @@ $(document).ready(function () {
       })
         var arrSmall = [];
 
+        function compare(a,b) {
+          if (a.count > b.count){
+            return -1;
+          }
+          if (a.count <= b.count){
+            return 1;
+          }
+          return 0
+        }
+
+        arr.sort(compare);
+
         for(var i = 0; i < 10; i++)
         {
           arrSmall[i] = arr[i];
         }
-        console.log(arrSmall);
+        //console.log(arrSmall);
         createChart(arrSmall);
       }
     });
@@ -47,7 +67,7 @@ $(document).ready(function () {
 
   function createChart(smallArray){
 
-    console.log(smallArray.length);
+    //console.log(smallArray.length);
     var bubbleChart = new d3.svg.BubbleChart({
       supportResponsive: true,
     //container: => use @default
