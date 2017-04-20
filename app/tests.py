@@ -57,7 +57,8 @@ class TestModels (TestCase):
     def test_publisher_1(self):
         publisher = Publisher(ident = 99999, name = "Publisher", 
                               num_games = 3, year_founded = 2000, 
-                              country = "England", website = "Fake.com")
+                              country = "England", website = "Fake.com",
+															gameid=500, characterid = 0, picture = "fake.com/picture")
         session = self.db.session
         session.add(publisher)
         session.commit()
@@ -69,7 +70,8 @@ class TestModels (TestCase):
     def test_publisher_2(self):
         publisher = Publisher(ident = 99999, name = "Publisher", 
                               num_games = 3, year_founded = 2000, 
-                              country = "England", website = "Fake.com")
+                              country = "England", website = "Fake.com",
+															gameid=501, characterid = 501, picture = "fake.com/picture")
         session = self.db.session
         session.add(publisher)
         session.commit()
@@ -81,7 +83,8 @@ class TestModels (TestCase):
     def test_publisher_3(self):
         publisher = Publisher(ident = 99999, name = "Publisher", 
                               num_games = 3, year_founded = 2000, 
-                              country = "England", website = "Fake.com")
+                              country = "England", website = "Fake.com",
+															gameid=501, characterid = 501, picture = "fake.com/picture")
         session = self.db.session
         session.add(publisher)
         session.commit()

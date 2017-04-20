@@ -60,9 +60,9 @@ class Publisher(db.Model):
 	    self.year_founded = year_founded
 	    self.country = country
 	    self.website = website
-            self.gameid = gameid
-            self.characterid = characterid
-            self.picture = picture
+	    self.gameid = gameid
+	    self.characterid = characterid
+	    self.picture = picture
 
 
 	ident = db.Column(db.Integer, primary_key=True)
