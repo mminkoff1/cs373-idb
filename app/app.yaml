@@ -1,6 +1,24 @@
-runtime: python27
+runtime: python
+env: flex
+
+runtime_config:
+    python_version: 3
 api_version: 1
 threadsafe: true
+
+entrypoint: gunicorn -b :$PORT main:app
+
+automatic_scaling:
+    max_idle_instances: 0
+    max_num_instances: 1
+
+env_variables:
+    # Replace user, password, database, and instance connection name with the values obtained
+    # when configuring your Cloud SQL instance.
+    SQLALCHEMY_DATABASE_URI: >-
+      postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10/gamelookup?host=/cloudsql/game-lookup:us-central1:gamelookup
+beta_settings:
+    cloud_sql_instances: game-lookup:us-central1:gamelookup
 
 handlers:
 - url: /.*

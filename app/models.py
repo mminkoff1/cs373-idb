@@ -2,25 +2,34 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Table, Column, Float, Integer, String, Boolean, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from flask import Flask
 
-Base = declarative_base()
+app = Flask(__name__)
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] =                                    \
+    'postgres://postgres:seanpickupyourphone@35.184.159.10/gamelookup'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-class Game(Base):
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:seanpickupyourphone@/35.184.159.10/gamelookup?host=/cloudsql/game-lookup:us-central1:gamelookup'
+
+db = SQLAlchemy(app)
+
+class Game(db.Model):
 	__tablename__ = 'games'
 
-	ident = Column(Integer, primary_key=True)
-	name = Column(String)
-	year = Column(Integer)
-	publisher = Column(String)
-	#num_players = Column(Integer)
-	#notable_char
-	avg_score = Column(String)
-	#systems = Column(String)
-	theme = Column(String)
-	picture = Column(String)
-	description = Column(String)
-	characterid = Column(String)
-	#what print will return	
+	ident = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String())
+	year = db.Column(db.Integer)
+	publisher = db.Column(db.String())
+	avg_score = db.Column(db.String())
+	theme = db.Column(db.String())
+	picture = db.Column(db.String())
+	description = db.Column(db.String())
+	characterid = db.Column(db.String())
+	publisher_id = db.Column(db.Integer, db.ForeignKey('publishers.ident'))
+
+
 	def __repr__(self):
 		return  "<Game(name='%s', year='%s', publisher='%s', avg_score='%s', theme='%s')>" % (
 				self.name, self.year, self.publisher, self.avg_score, self.theme)
@@ -40,29 +49,31 @@ class Game(Base):
 		}
 
 
-class Publisher(Base):
+class Publisher(db.Model):
 	__tablename__ = 'publishers'
 
-	def __init__(self, ident, name, num_games, year_founded, country, website):
+	def __init__(self, ident, name, num_games, year_founded, country, website, gameid, characterid, picture):
 	    self.ident = ident
 	    self.name = name
 	    self.num_games = int(num_games)
 	    self.year_founded = year_founded
 	    self.country = country
 	    self.website = website
+	    self.gameid = gameid
+	    self.characterid = characterid
+	    self.picture = picture
 
+	ident = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String())
+	num_games = db.Column(db.Integer)
+	year_founded = db.Column(db.Integer)
+	country = db.Column(db.String())
+	website = db.Column(db.String())
+	picture = db.Column(db.String())
+	gameid = db.Column(db.Integer)
+	characterid = db.Column(db.Integer)
 
-	ident = Column(Integer, primary_key=True)
-	name = Column(String)
-	#abbreviation = Column(String)
-
-	num_games = Column(Integer)
-	year_founded = Column(Integer)
-	country = Column(String)
-	#num_franchises = Column(Integer)
-	#notable_games
-	website = Column(String)
-	picture = Column(String)
+	games = db.relationship('Game', backref='publishers', lazy='dynamic')
 
 	@property
 	def serialize(self): 
@@ -77,7 +88,7 @@ class Publisher(Base):
 		}
 
 
-class Character(Base):
+class Character(db.Model):
 	__tablename__ = 'characters'
 
 	def __init__(self, ident, name, gender, franchise, location, first_game):
@@ -88,14 +99,14 @@ class Character(Base):
 	    self.location = location
 	    self.first_game = first_game
 
-	ident = Column(Integer, primary_key=True)
-	name = Column(String)
-	gender = Column(String)
-	franchise = Column(String)
-	location = Column(String)
-	first_game = Column(String)
-	publid = Column(Integer)
-	picture = Column(String)
+	ident = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String())
+	gender = db.Column(db.String())
+	franchise = db.Column(db.String())
+	location = db.Column(db.String())
+	first_game = db.Column(db.String())
+	publid = db.Column(Integer)
+	picture = db.Column(db.String())
 
 	@property
 	def serialize(self): 

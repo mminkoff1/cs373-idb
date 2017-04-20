@@ -52,10 +52,9 @@
     </div>
   </nav>
 
-
-
   <div class="container-fluid">
 
+    <h1> AND Results </h1>
     <table class="table table-bordered" id="game_table">
 
       <thead>
@@ -81,6 +80,35 @@
     </table>
   </div>
 
+    <div class="container-fluid" id="second_table">
+
+    <h1> OR Results </h1>
+    <table class="table table-bordered" id="game_table_or">
+
+      <thead>
+        <tr id="tableHeader">
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Name</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Year Created</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Publisher</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Game Rating</th>
+          <th style="background:white; font-family: 'Press Start 2P', cursive;">Theme</th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for game in games %}
+        <tr>
+        <td><a href="{{ game.ident }}">{{ game.name }}</a></td>
+        <td>{{ game.year }}</td>
+        <td>{{ game.publisher }}</td>
+        <td>{{ game.avg_score }}</td>
+        <td>{{ game.theme }}</td>
+        </tr>
+        {% endfor %}
+     </tbody>
+    </table>
+  </div>
+
+
   <div id="search" style="height: 10%; width: 50%; margin: 0 auto;">
     <button type="button" class="close" style="z-index: 9999;">x</button>
     <form>
@@ -96,7 +124,30 @@
 
     <script>
     $(document).ready(function(){
-        $('#game_table').DataTable();
+
+      var dataTable = $('#game_table_or').dataTable();
+      var dataTable2 = $('#game_table').dataTable();
+      $('#second_table').hide();
+      $('.container-fluid h1').hide();
+
+	  var input = $(".dataTables_filter input");
+	  input.unbind('keyup search input').bind('keyup', function (e) {
+         var keywords = input.val().split(' '), filter ='';
+         for (var i=0; i<keywords.length; i++) {
+             filter = (filter!=='') ? filter+'|'+keywords[i] : keywords[i];
+         }            
+         filter2 = input.val();
+         dataTable.fnFilter(filter, null, true, false, true, true);
+         dataTable2.fnFilter(filter2, null, true, false, true, true);
+         if (input.val().length == 0) {
+           $('#second_table').hide();
+           $('.container-fluid h1').hide();
+         } else {
+           $('#second_table').show();
+           $('.container-fluid h1').show();
+           $('#second_table label').hide();
+         }
+	  });
     });
     </script>
   </body>

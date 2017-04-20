@@ -45,14 +45,17 @@
       </div>
 
       <div class="col-md-4">
-        <h1 id="name"> {{ game.name }}</h1>
-        <div id = "description" style="color:white;"> {{ game.description }} </div>
+				<h1 id="name"> {{ game.name }}</h1>
+        <div id = "description" style="color: white;"> {{ game.description }} </div>
+      </div>
       <div class="col-md-4">
         <h1> Character</h1>
         <a href="../characters/{{ character.ident }}">{{ character.name }}</a>
 
         <h1>Publisher</h1>
-        <a href="../publishers/{{ publisher.ident }}">{{ game.publisher }}</a>
+       
+        <a href="../publishers/{{ game.publisher_id }}">{{ game.publisher }}</a>
+        
 
       </div>
     </div>
@@ -76,14 +79,10 @@
      <script>
     $(document).ready(function(){
         var desc = $('#description').text();
-        desc = desc.replace(/\<(.*?)\>/g,"");
-        desc = desc.replace(/  +/g, ' ');
-        console.log(desc);
-        $('#description').text('');
-        $('#description').text(desc);
-
-        //$("description2").text(desc);        
-
+				desc = desc.replace(/\<(.*?)\>/g,"");
+				desc = desc.replace(/  +/g, ' ');
+				console.log(desc);
+        $('#description').empty().append(desc);
     });
     </script>
 </body>
